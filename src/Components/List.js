@@ -8,6 +8,10 @@ class List extends React.Component {
   };
 
   componentDidMount() {
+    this.getItems()
+  }
+
+  getItems = () => {
     fetch("http://localhost:3000/items")
     .then(resp => resp.json())
     .then(items => this.setState({
@@ -24,15 +28,26 @@ class List extends React.Component {
 
   addNewItem = event => {
     event.preventDefault();
+    const payload = { item: {content: this.state.newItem}}
+
     if (this.state.newItem.trim() !== "") {
-      this.setState({
-        allItems: [...this.state.allItems, { content: this.state.newItem }],
+      fetch("http://localhost:3000/items", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(this.getItems)
+      .then(this.setState({
         newItem: ""
-      });
+      }))
     } else {
+      console.log("it be blank dawg")
       this.setState({
         newItem: ""
-      });
+      })
     }
   };
 

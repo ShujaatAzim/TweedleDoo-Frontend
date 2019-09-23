@@ -8,15 +8,11 @@ class List extends React.Component {
   };
 
   componentDidMount() {
-    let itemList = [
-      { name: "Networking" },
-      { name: "Project" },
-      { name: "Algorithms" },
-      { name: "Learning" }
-    ];
-    this.setState({
-      allItems: itemList
-    });
+    fetch("http://localhost:3000/items")
+    .then(resp => resp.json())
+    .then(items => this.setState({
+        allItems: items
+    }))
   }
 
   newItem = event => {
@@ -30,7 +26,7 @@ class List extends React.Component {
     event.preventDefault();
     if (this.state.newItem.trim() !== "") {
       this.setState({
-        allItems: [...this.state.allItems, { name: this.state.newItem }],
+        allItems: [...this.state.allItems, { content: this.state.newItem }],
         newItem: ""
       });
     } else {
@@ -40,19 +36,20 @@ class List extends React.Component {
     }
   };
 
-  deleteItem = name => {
-    const newItems = this.state.allItems.filter(item => item.name !== name);
+  deleteItem = content => {
+    const newItems = this.state.allItems.filter(item => item.content !== content);
     this.setState({
       allItems: newItems
     });
   };
+
   render() {
     return (
       <div>
         <div>
           {this.state.allItems.map((item, index) => {
             return (
-              <Item key={index} name={item.name} deleteItem={this.deleteItem} />
+              <Item key={index} content={item.content} deleteItem={this.deleteItem} />
             );
           })}
         </div>

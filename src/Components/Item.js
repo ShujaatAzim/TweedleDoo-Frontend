@@ -4,8 +4,8 @@ class Item extends React.Component {
   render() {
     return (
       <div>
-        {this.props.name}
-        <button onClick={() => this.props.deleteItem(this.props.name)}>
+        {this.props.content}
+        <button onClick={() => this.props.deleteItem(this.props.content)}>
           X
         </button>
       </div>

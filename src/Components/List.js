@@ -51,11 +51,18 @@ class List extends React.Component {
     }
   };
 
-  deleteItem = content => {
-    const newItems = this.state.allItems.filter(item => item.content !== content);
-    this.setState({
-      allItems: newItems
-    });
+  deleteItem = id => {
+    const delItem = { item: {id: id}}
+    console.log(delItem)
+    fetch(`http://localhost:3000/items/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(delItem)
+    })
+    .then(this.getItems)
   };
 
   render() {
@@ -64,7 +71,7 @@ class List extends React.Component {
         <div>
           {this.state.allItems.map((item, index) => {
             return (
-              <Item key={index} content={item.content} deleteItem={this.deleteItem} />
+              <Item key={item.id} id={item.id} content={item.content} deleteItem={this.deleteItem} />
             );
           })}
         </div>

@@ -19,14 +19,14 @@ class List extends React.Component {
     }))
   }
 
-  newItem = event => {
+  newItem = (event) => {
     event.preventDefault();
     this.setState({
       newItem: event.target.value
     });
   };
 
-  addNewItem = event => {
+  addNewItem = (event) => {
     event.preventDefault();
     const payload = { item: {content: this.state.newItem}}
 
@@ -44,16 +44,15 @@ class List extends React.Component {
         newItem: ""
       }))
     } else {
-      console.log("it be blank dawg")
+      alert("It can't be blank, dawg")
       this.setState({
         newItem: ""
       })
     }
   };
 
-  deleteItem = id => {
+  deleteItem = (id) => {
     const delItem = { item: {id: id}}
-    console.log(delItem)
     fetch(`http://localhost:3000/items/${id}`, {
       method: "DELETE",
       headers: {
@@ -71,17 +70,13 @@ class List extends React.Component {
         <div>
           {this.state.allItems.map((item, index) => {
             return (
-              <Item key={item.id} id={item.id} content={item.content} deleteItem={this.deleteItem} />
+              <Item key={item.id} index={index} id={item.id} content={item.content} deleteItem={this.deleteItem} />
             );
           })}
         </div>
         <div>
           <form onSubmit={this.addNewItem}>
-            <input
-              type="text"
-              value={this.state.newItem}
-              onChange={this.newItem}
-            />
+            <input type="text" value={this.state.newItem} onChange={this.newItem} />
             <button>Add</button>
           </form>
         </div>

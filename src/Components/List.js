@@ -1,36 +1,26 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Item from "./Item"
 
-class List extends React.Component {
-  state = {
-    allItems: [],
-    newItem: ""
-  };
+const List = () => {
 
-  componentDidMount() {
-    this.getItems()
-  }
+  const [allItems, setAllItems] = useState([])
+  const [newItem, setNewItem] = useState("".trim())
 
-  getItems = () => {
+  useEffect(() => {
+    getItems()
+  }, [])
+
+  const getItems = () => {
     fetch("http://localhost:3000/items")
     .then(resp => resp.json())
-    .then(items => this.setState({
-        allItems: items
-    }))
+    .then(items => setAllItems(items))
   }
 
-  newItem = (event) => {
-    event.preventDefault();
-    this.setState({
-      newItem: event.target.value
-    });
-  };
+  const addNewItem = e => {
+    e.preventDefault()
+    const payload = { item: {content: newItem}}
 
-  addNewItem = (event) => {
-    event.preventDefault();
-    const payload = { item: {content: this.state.newItem}}
-
-    if (this.state.newItem.trim() !== "") {
+    if (newItem !== "") {
       fetch("http://localhost:3000/items", {
         method: "POST",
         headers: {
@@ -39,50 +29,34 @@ class List extends React.Component {
         },
         body: JSON.stringify(payload)
       })
-      .then(this.getItems)
-      .then(this.setState({
-        newItem: ""
-      }))
+      .then(() => getItems())
+      .then(() => setNewItem(""))
     } else {
       alert("It can't be blank, dawg")
-      this.setState({
-        newItem: ""
-      })
+      setNewItem("")
     }
   };
 
-  deleteItem = (id) => {
-    const delItem = { item: {id: id}}
+  const deleteItem = id => {
     fetch(`http://localhost:3000/items/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(delItem)
+      method: "DELETE"
     })
-    .then(this.getItems)
+    .then(() => getItems())
   };
 
-  render() {
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          {this.state.allItems.map((item, index) => {
-            return (
-              <Item key={item.id} index={index} id={item.id} content={item.content} deleteItem={this.deleteItem} />
-            );
-          })}
-        </div>
-        <div>
-          <form onSubmit={this.addNewItem}>
-            <input type="text" value={this.state.newItem} onChange={this.newItem} />
-            <button>Add</button>
-          </form>
-        </div>
+        { allItems !== [] ? allItems.map(item => <Item key={item.id} item={item} deleteItem={deleteItem} />) : null }
       </div>
-    );
-  }
+      <div>
+        <form onSubmit={e => addNewItem(e)}>
+          <input type="text" value={newItem} onChange={e => setNewItem(e.target.value)} />
+          <button>Add</button>
+        </form>
+      </div>
+    </div>
+  )
 }
 
 export default List;

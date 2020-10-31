@@ -1,8 +1,15 @@
 import React from "react"
 
 const Item = props => {
+
+  const deleteItem = id => {
+    fetch(`http://localhost:3000/items/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => getItems())
+  }
   
-  const { item, deleteItem } = props
+  const { item, getItems } = props
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import List from "./Components/List"
+import ListContainer from "./Components/ListContainer"
 
 const App = () => {
 
@@ -7,7 +7,7 @@ const App = () => {
     <div style={{ textAlign: "center" }}>
       <h1>To Do List</h1>
       <h6>By Shujaat Azim</h6>
-      <List />
+      <ListContainer />
     </div>
   )
 }

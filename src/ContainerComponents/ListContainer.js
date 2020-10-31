@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import AddItemForm from './AddItemForm'
-import List from './List'
+import AddItemForm from '../Components/AddItemForm'
+import List from '../Components/List'
 
 const ListContainer = () => {
 
@@ -22,6 +22,7 @@ const ListContainer = () => {
       <div>
         <AddItemForm getItems={getItems} newItem={newItem} setNewItem={setNewItem} />
       </div>
+      <br />
       <div>
         <List allItems={allItems} getItems={getItems} />
       </div>

@@ -7,7 +7,13 @@ const List = props => {
 
   return (
     <div>
-      { allItems !== [] ? allItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) : null }
+      <div>
+        { allItems !== [] ? allItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) : null }
+      </div>
+      <br />
+      <div>
+        You have {allItems.length} todos left!
+      </div>
     </div>
   )
 }

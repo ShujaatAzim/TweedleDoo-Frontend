@@ -5,10 +5,13 @@ import List from '../Components/List'
 const ListContainer = () => {
 
   const [allItems, setAllItems] = useState([])
+  const [allLists, setAllLists] = useState([])
+  const [currentList, setCurrentList] = useState(null)
   const [newItem, setNewItem] = useState("".trim())
 
   useEffect(() => {
     getItems()
+    getLists()
   }, [])
 
   const getItems = () => {
@@ -17,14 +20,21 @@ const ListContainer = () => {
     .then(items => setAllItems(items))
   }
 
+  const getLists = () => {
+    fetch("http://localhost:3000/lists")
+    .then(resp => resp.json())
+    .then(lists => setAllLists(lists))
+  }
+
   return (
     <div>
+      <br />
       <div>
-        <AddItemForm getItems={getItems} newItem={newItem} setNewItem={setNewItem} />
+        <List allItems={allItems} allLists={allLists} getItems={getItems} />
       </div>
       <br />
       <div>
-        <List allItems={allItems} getItems={getItems} />
+        <AddItemForm getItems={getItems} newItem={newItem} setNewItem={setNewItem} />
       </div>
     </div>
   )

@@ -3,19 +3,19 @@ import Item from './Item'
 
 const List = props => {
 
-  const { allItems, allLists, getItems } = props
+  const { currentList, getItems } = props
 
   return (
     <div>
       <p>
-        { allLists.length !== 0 ? allLists[0].name : null }
+        { currentList.name }
       </p>
       <div>
-        { allItems !== [] ? allItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) : null }
+        { currentList.items.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
       </div>
       <br />
       <div>
-        You have {allItems.length} todos left!
+        You have {currentList.items.length} todos left!
       </div>
     </div>
   )

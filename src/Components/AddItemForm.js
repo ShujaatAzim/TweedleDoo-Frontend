@@ -2,11 +2,11 @@ import React from 'react'
 
 const AddItemForm = props => {
 
-  const { newItem, getItems, setNewItem } = props
+  const { newItem, getItems, setNewItem, currentList } = props
 
   const addNewItem = e => {
     e.preventDefault()
-    const payload = { item: {list_id: props.currentList.id, content: newItem}}
+    const payload = { item: {list_id: currentList.id, content: newItem}}
 
     if (newItem !== "") {
       fetch("http://localhost:3000/items", {
@@ -17,8 +17,8 @@ const AddItemForm = props => {
         },
         body: JSON.stringify(payload)
       })
-      .then(() => getItems())
       .then(() => setNewItem(""))
+      .then(() => getItems())
     } else {
       alert("It can't be blank, dawg")
       setNewItem("")

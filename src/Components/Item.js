@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Item = props => {
 
@@ -11,12 +11,13 @@ const Item = props => {
   
   const { item, getItems } = props
 
+  const [complete, setComplete] = useState(false)
+
   return (
-    <div>
+    <div style={{ textDecoration: (complete ? "line-through" : null ) }}>
       {item.content}
-      <button onClick={() => deleteItem(item.id)}>
-        X
-      </button>
+      <button onClick={() => setComplete(!complete)}>Complete</button>
+      <button onClick={() => deleteItem(item.id)}>Delete</button>
     </div>
   )
 }

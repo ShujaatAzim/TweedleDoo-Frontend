@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 
 const Item = props => {
 
+  const { item, getItems } = props
+
+  const [complete, setComplete] = useState(false)
+  const [newName, setNewName] = useState(item.name)
+  const [edit, setEdit] = useState(false)
+
   const deleteItem = id => {
     fetch(`http://localhost:3000/items/${id}`, {
       method: "DELETE"
@@ -11,13 +17,19 @@ const Item = props => {
 
   const editItem = (e, id) => {
     e.preventDefault()
-    console.log(id)
+    fetch(`http://localhost:3000/items/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        content: newName
+      })
+    })
+    .then(() => setEdit(false))
+    .then(() => getItems())
   }  
-  const { item, getItems } = props
-
-  const [complete, setComplete] = useState(false)
-  const [newName, setNewName] = useState(item.name)
-  const [edit, setEdit] = useState(false)
 
   return (
     <div style={{ textDecoration: (complete ? "line-through" : null ) }}>
@@ -35,4 +47,4 @@ const Item = props => {
     </div>
   )
 }
-export default Item;
+export default Item

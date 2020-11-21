@@ -17,13 +17,17 @@ const Item = props => {
 
   return (
     <div style={{ textDecoration: (complete ? "line-through" : null ) }}>
-      {item.content}
+      <b>{item.content}</b>
       <div>
         <button onClick={() => setComplete(!complete)}>{ complete ? "Mark Incomplete" : "Mark Complete" }</button>
         <button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</button>
         <button onClick={() => deleteItem(item.id)}>Delete Item</button>
       </div>
-      { edit ? <EditItemForm item={item} getItems={getItems} setEdit={setEdit} /> : null }
+      <br />
+      <div>
+        { edit ? <EditItemForm item={item} getItems={getItems} setEdit={setEdit} /> : null }
+      </div>
+      <br />
     </div>
   )
 }

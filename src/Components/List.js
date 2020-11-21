@@ -13,6 +13,10 @@ const List = props => {
         { currentList.name }
       </p>
       <div>
+        <button>Hide List</button>
+        <button>Delete List</button>
+      </div>
+      <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
       </div>
       <br />

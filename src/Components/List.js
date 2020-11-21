@@ -3,9 +3,21 @@ import Item from './Item'
 
 const List = props => {
 
-  const { currentList, getItems, allItems } = props
+  const { currentList, getItems, allItems, setCurrentList, getLists } = props
 
   let currentItems = allItems.filter(item => item.list_id === currentList.id)
+
+  const deleteList = () => {
+    if (currentItems.length === 0) {
+      fetch(`http://localhost:3000/lists/${currentList.id}`, {
+        method: "DELETE"
+      })
+      .then(() => setCurrentList(null))
+      .then(() => getLists())
+    } else {
+      alert("Delete all items from this list first!")
+    }
+  }
 
   return (
     <div>
@@ -13,9 +25,10 @@ const List = props => {
         { currentList.name }
       </p>
       <div>
-        <button>Hide List</button>
-        <button>Delete List</button>
+        <button onClick={() => setCurrentList(null)}>Hide List</button>
+        <button onClick={() => deleteList()}>Delete List</button>
       </div>
+      <br />
       <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
       </div>

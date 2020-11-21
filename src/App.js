@@ -43,30 +43,37 @@ const App = () => {
       <div>
         <label>Choose a List</label>
         <div>
-          <select name="lists" defaultValue="" onChange={e => handleCurrentList(e)}>
+          <select name="lists" disabled={creatingList} defaultValue="" onChange={e => handleCurrentList(e)}>
             <option value="" disabled hidden>Choose here</option>
             { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
           </select>
         </div>
-        { !currentList ?
+      </div>
+      <br />
+      { !currentList ?
         <div>
           Or, create new list!
           <div>
-            <button onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</button>
+            <button disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</button>
           </div>
-        </div>
-        : null }
-        <div>
-          { creatingList ? <NewListForm getLists={getLists} setCreatingList={setCreatingList} /> : null }
-        </div>
-      </div>
+        </div> : null 
+      }
       <br />
       <div>
-        { currentList ? <ListContainer allLists={allLists} allItems={allItems} currentList={currentList} getItems={getItems} /> : null }
+        { creatingList ? <NewListForm getLists={getLists} setCreatingList={setCreatingList} /> : null }
       </div>
+      <br />
+      { currentList ? 
       <div>
-        { currentList ? <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} /> : null }
-      </div>
+        <div>
+          <ListContainer allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} getItems={getItems} getLists={getLists} />
+        </div>
+        <div>
+          <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />
+        </div>
+      </div> : null 
+      }
+
     </div>
   )
 }

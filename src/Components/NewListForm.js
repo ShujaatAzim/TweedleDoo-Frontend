@@ -35,6 +35,7 @@ const NewListForm = props => {
         <label>New List Name:</label>
         <input type="text" value={newListName} placeholder="new list name" onChange={e => setNewListName(e.target.value)} />
         <input type="submit" />
+        <button onClick={() => setCreatingList(false)}>Cancel</button>
       </form>
     </div>
   )

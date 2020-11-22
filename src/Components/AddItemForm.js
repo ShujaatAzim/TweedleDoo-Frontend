@@ -20,7 +20,7 @@ const AddItemForm = props => {
       .then(() => setNewItem(""))
       .then(() => getItems())
     } else {
-      alert("It can't be blank, dawg")
+      alert("Can't add blank item!")
       setNewItem("")
     }
   }

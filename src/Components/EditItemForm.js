@@ -8,19 +8,24 @@ const EditItemForm = props => {
 
   const editItem = (e, id) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/items/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        content: newContent
+    if (newContent !== item.content) {
+      fetch(`http://localhost:3000/items/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          content: newContent
+        })
       })
-    })
-    .then(() => setNewContent(""))
-    .then(() => setEdit(false))
-    .then(() => getItems())
+      .then(() => setNewContent(""))
+      .then(() => setEdit(false))
+      .then(() => getItems())
+    } else {
+      setEdit(false)
+      alert("Item not changed!")
+    }
   }  
 
   return (

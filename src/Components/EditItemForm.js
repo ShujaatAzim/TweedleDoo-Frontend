@@ -16,7 +16,8 @@ const EditItemForm = props => {
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          content: newContent
+          content: newContent,
+          complete: item.complete
         })
       })
       .then(() => setNewContent(""))

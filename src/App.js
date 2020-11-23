@@ -34,12 +34,12 @@ const App = () => {
     .then(list => setCurrentList(list))
   }
 
-
   return (
     <div style={{ textAlign: "center" }}>
       <h1>To Do List</h1>
       <h6>By Shujaat Azim</h6>
       <br />
+      { currentList ? null : 
       <div>
         <label>Choose a List</label>
         <div>
@@ -48,7 +48,7 @@ const App = () => {
             { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
           </select>
         </div>
-      </div>
+      </div> }
       <br />
       { !currentList ?
         <div>

@@ -6,7 +6,7 @@ const AddItemForm = props => {
 
   const addNewItem = e => {
     e.preventDefault()
-    const payload = { item: {list_id: currentList.id, content: newItem}}
+    const payload = { item: {list_id: currentList.id, content: newItem, complete: false}}
 
     if (newItem !== "") {
       fetch("http://localhost:3000/items", {

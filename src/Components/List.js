@@ -6,6 +6,8 @@ const List = props => {
   const { currentList, getItems, allItems, setCurrentList, getLists } = props
 
   let currentItems = allItems.filter(item => item.list_id === currentList.id)
+  let completedItems = [...currentItems]
+  completedItems = completedItems.filter(item => item.complete === true)
 
   const deleteList = () => {
     if (currentItems.length === 0) {
@@ -34,7 +36,7 @@ const List = props => {
       </div>
       <br />
       <div>
-        You have {currentItems.length} todos left!
+        { completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : "List complete! Yay!" }
       </div>
     </div>
   )

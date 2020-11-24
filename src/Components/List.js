@@ -36,7 +36,9 @@ const List = props => {
       </div>
       <br />
       <div>
-        { completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : "List complete! Yay!" }
+        { currentItems.length === 0 ? "No items! Add some below:" : 
+          completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : 
+          "List complete! Yay!" }
       </div>
     </div>
   )

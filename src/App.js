@@ -73,9 +73,8 @@ const App = () => {
         </div>
       </div> : null 
       }
-
     </div>
   )
 }
 
-export default App;
+export default App

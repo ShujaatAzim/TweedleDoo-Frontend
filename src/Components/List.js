@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Item from './Item'
+import EditListForm from './EditListForm'
 
 const List = props => {
 
@@ -8,6 +9,8 @@ const List = props => {
   let currentItems = allItems.filter(item => item.list_id === currentList.id)
   let completedItems = [...currentItems]
   completedItems = completedItems.filter(item => item.complete === true)
+
+  const [editingName, setEditingName] = useState(false)
 
   const deleteList = () => {
     if (currentItems.length === 0) {
@@ -28,8 +31,10 @@ const List = props => {
       </p>
       <div>
         <button onClick={() => setCurrentList(null)}>Hide List</button>
+        <button onClick={() => setEditingName(!editingName)}>{ editingName ? "Cancel Edit" : "Edit List" }</button>
         <button onClick={() => deleteList()}>Delete List</button>
       </div>
+      { editingName ? <EditListForm currentList={currentList} /> : null }
       <br />
       <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }

@@ -6,9 +6,9 @@ const EditListForm = props => {
 
   const [newName, setNewName] = useState(currentList.name)
 
-  const editList = e => {
+  const editList = (e, id) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/lists/${currentList.id}`, {
+    fetch(`http://localhost:3000/lists/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const EditListForm = props => {
 
   return (
     <div>
-      <form onSubmit={e => editList()}>
+      <form onSubmit={e => editList(e, currentList.id)}>
         <input type="text" placeholder={currentList.name} onChange={e => setNewName(e.target.value)} />
         <input type="submit" />
       </form>

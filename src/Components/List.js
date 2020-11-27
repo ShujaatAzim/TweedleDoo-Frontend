@@ -34,7 +34,7 @@ const List = props => {
         <button onClick={() => setEditingName(!editingName)}>{ editingName ? "Cancel Edit" : "Edit List" }</button>
         <button onClick={() => deleteList()}>Delete List</button>
       </div>
-      { editingName ? <EditListForm currentList={currentList} /> : null }
+      { editingName ? <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} /> : null }
       <br />
       <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }

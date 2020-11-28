@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const EditListForm = props => {
 
-  const { currentList, getLists, setEditingName } = props
+  const { currentList, getLists, setEditingName, setCurrentList } = props
 
   const [newName, setNewName] = useState(currentList.name)
 
@@ -19,6 +19,7 @@ const EditListForm = props => {
       })
     })
     .then(() => setNewName(""))
+    .then(() => setCurrentList(null))
     .then(() => setEditingName(false))
     .then(() => getLists())
   }

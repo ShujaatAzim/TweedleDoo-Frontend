@@ -26,15 +26,16 @@ const List = props => {
 
   return (
     <div>
-      <p>
+      <h3>
         { currentList.name }
-      </p>
+      </h3>
       <div>
         <button onClick={() => setCurrentList(null)}>Hide List</button>
         <button onClick={() => setEditingName(!editingName)}>{ editingName ? "Cancel Edit" : "Edit List" }</button>
         <button onClick={() => deleteList()}>Delete List</button>
       </div>
-      { editingName ? <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} /> : null }
+      { editingName ? <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} setCurrentList={setCurrentList} /> 
+        : null }
       <br />
       <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }

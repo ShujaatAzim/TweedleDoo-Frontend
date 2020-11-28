@@ -3,9 +3,22 @@ import List from '../Components/List'
 
 const ListContainer = props => {
 
+  const { currentList, allItems } = props
+
+  let currentItems = allItems.filter(item => item.list_id === currentList.id)
+  let completedItems = [...currentItems]
+  completedItems = completedItems.filter(item => item.complete === true)
+
   return (
     <div>
-      <List {...props} />
+      <div>
+        <List {...props} currentItems={currentItems} />
+      </div>
+      <div>
+        { currentItems.length === 0 ? "No items! Add some below:" : 
+          completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : 
+          "List complete! Yay!" }
+      </div>
     </div>
   )
 }

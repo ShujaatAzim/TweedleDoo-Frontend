@@ -4,11 +4,7 @@ import EditListForm from './EditListForm'
 
 const List = props => {
 
-  const { currentList, getItems, allItems, setCurrentList, getLists } = props
-
-  let currentItems = allItems.filter(item => item.list_id === currentList.id)
-  let completedItems = [...currentItems]
-  completedItems = completedItems.filter(item => item.complete === true)
+  const { currentList, getItems, currentItems, setCurrentList, getLists } = props
 
   const [editingName, setEditingName] = useState(false)
 
@@ -25,7 +21,7 @@ const List = props => {
   }
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h3>
         { currentList.name }
       </h3>
@@ -34,18 +30,14 @@ const List = props => {
         <button onClick={() => setEditingName(!editingName)}>{ editingName ? "Cancel Edit" : "Edit List" }</button>
         <button onClick={() => deleteList()}>Delete List</button>
       </div>
-      { editingName ? <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} setCurrentList={setCurrentList} /> 
+      { editingName ? 
+          <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} setCurrentList={setCurrentList} /> 
         : null }
       <br />
       <div>
         { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
       </div>
       <br />
-      <div>
-        { currentItems.length === 0 ? "No items! Add some below:" : 
-          completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : 
-          "List complete! Yay!" }
-      </div>
     </div>
   )
 }

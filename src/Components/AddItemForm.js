@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Input } from 'semantic-ui-react'
 
 const AddItemForm = props => {
 
@@ -28,8 +29,12 @@ const AddItemForm = props => {
   return (
     <div>
       <form onSubmit={e => addNewItem(e)}>
-        <input type="text" placeholder="add item" value={newItem} onChange={e => setNewItem(e.target.value)} />
-        <button type="submit">Add</button>
+        <Input size="mini" type="text" placeholder="add item" value={newItem} onChange={e => setNewItem(e.target.value)} />
+        <Button.Group>
+          <Button type="submit">Add</Button>
+            <Button.Or />
+          <Button type="button" onClick={() => setNewItem("")}>Clear</Button>
+        </Button.Group>
       </form>
     </div>
   )

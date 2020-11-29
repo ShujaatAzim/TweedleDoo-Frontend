@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Item from './Item'
 import EditListForm from './EditListForm'
+import { Button } from 'semantic-ui-react'
 
 const List = props => {
 
@@ -25,18 +26,23 @@ const List = props => {
       <h3>
         { currentList.name }
       </h3>
-      <div>
-        <button onClick={() => setCurrentList(null)}>Hide List</button>
-        <button onClick={() => setEditingName(!editingName)}>{ editingName ? "Cancel Edit" : "Edit List" }</button>
-        <button onClick={() => deleteList()}>Delete List</button>
-      </div>
+      { editingName ? null : 
+        <div>
+          <Button.Group>
+            <Button onClick={() => setCurrentList(null)}>Hide List</Button>
+              <Button.Or />
+            <Button onClick={() => setEditingName(true)}>Edit List</Button>
+              <Button.Or />
+            <Button onClick={() => deleteList()}>Delete List</Button>
+          </Button.Group>
+        </div>
+      }
       { editingName ? 
           <EditListForm currentList={currentList} getLists={getLists} setEditingName={setEditingName} setCurrentList={setCurrentList} /> 
         : null }
       <br />
-      <div>
-        { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
-      </div>
+      <br />
+      { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
       <br />
     </div>
   )

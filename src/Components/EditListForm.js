@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Input } from 'semantic-ui-react'
 
 const EditListForm = props => {
 
@@ -27,8 +28,12 @@ const EditListForm = props => {
   return (
     <div>
       <form onSubmit={e => editList(e, currentList.id)}>
-        <input type="text" placeholder={currentList.name} onChange={e => setNewName(e.target.value)} />
-        <input type="submit" />
+        <Input type="text" placeholder={currentList.name} onChange={e => setNewName(e.target.value)} />
+        <Button.Group>
+          <Button type="submit">Submit</Button>
+          <Button.Or />
+          <Button type="button" onClick={() => setEditingName(false)}>Cancel</Button>
+        </Button.Group>
       </form>
     </div>
   )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import EditItemForm from './EditItemForm'
+import { Button } from 'semantic-ui-react'
 
 const Item = props => {
 
@@ -31,12 +32,16 @@ const Item = props => {
   }
 
   return (
-    <div style={{ textDecoration: (complete ? "line-through" : undefined ) }}>
-      <b>{item.content}</b>
+    <div>
+      <b style={{ textDecoration: (complete ? "line-through" : undefined ) }}>{item.content}</b>
       <div>
-        <button onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</button>
-        <button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</button>
-        <button onClick={() => deleteItem(item.id)}>Delete Item</button>
+        <Button.Group>
+          <Button onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
+          <Button.Or />
+          <Button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
+          <Button.Or />
+          <Button onClick={() => deleteItem(item.id)}>Delete Item</Button>
+        </Button.Group>
       </div>
       <br />
       <div>

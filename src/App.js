@@ -36,9 +36,8 @@ const App = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>To Do List</h1>
+      <h1>TweedleDoo</h1>
       <h6>By Shujaat Azim</h6>
-      <br />
       { currentList ? null : 
       <div>
         <label>Choose a List</label>
@@ -58,7 +57,6 @@ const App = () => {
           </div>
         </div> : null 
       }
-      <br />
       <div>
         { creatingList ? <NewListForm getLists={getLists} setCreatingList={setCreatingList} /> : null }
       </div>

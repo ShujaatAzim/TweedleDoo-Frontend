@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import ItemFormContainer from './ContainerComponents/ItemFormContainer'
 import NewListForm from './Components/NewListForm'
+import { Button } from 'semantic-ui-react'
 
 const App = () => {
 
@@ -53,7 +54,7 @@ const App = () => {
         <div>
           Or, create new list!
           <div>
-            <button disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</button>
+            <Button disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</Button>
           </div>
         </div> : null 
       }

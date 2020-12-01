@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Input } from 'semantic-ui-react'
 
 const EditItemForm = props => {
 
@@ -31,9 +32,14 @@ const EditItemForm = props => {
 
   return (
     <div>
+      <br />
       <form onSubmit={e => editItem(e, item.id)}>
-        <input type="text" placeholder={item.content} onChange={e => setNewContent(e.target.value)} />
-        <input type="submit" />
+        <Input type="text" placeholder={item.content} onChange={e => setNewContent(e.target.value)} />
+        <Button.Group>
+          <Button type="submit">Submit</Button>
+          <Button.Or />
+          <Button type="button" onClick={() => setEdit(false)}>Cancel</Button>
+        </Button.Group>
       </form> 
     </div>
   )

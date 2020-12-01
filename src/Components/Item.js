@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import EditItemForm from './EditItemForm'
-import { Button } from 'semantic-ui-react'
+import { Button, Grid } from 'semantic-ui-react'
 
 const Item = props => {
 
@@ -32,23 +32,27 @@ const Item = props => {
   }
 
   return (
-    <div>
-      <b style={{ textDecoration: (complete ? "line-through" : undefined ) }}>{item.content}</b>
-      <div>
-        <Button.Group>
-          <Button onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
-          <Button.Or />
-          <Button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
-          <Button.Or />
-          <Button onClick={() => deleteItem(item.id)}>Delete Item</Button>
-        </Button.Group>
-      </div>
+    <>
+      <Grid.Row>
+        <Grid.Column style={{ paddingLeft: "33%"}}>
+          <b style={{ textDecoration: (complete ? "line-through" : undefined ) }}>{item.content}</b>
+        </Grid.Column>
+        <Grid.Column style={{ paddingRight: "20%" }}>
+          <Button.Group>
+            <Button onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
+            <Button.Or />
+            <Button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
+            <Button.Or />
+            <Button onClick={() => deleteItem(item.id)}>Delete Item</Button>
+          </Button.Group>
+          <div style={{ textAlign: "center" }}>
+            { edit ? <EditItemForm item={item} getItems={getItems} setEdit={setEdit} /> : null }
+          </div>
+        </Grid.Column>
+      </Grid.Row>
       <br />
-      <div>
-        { edit ? <EditItemForm item={item} getItems={getItems} setEdit={setEdit} /> : null }
-      </div>
       <br />
-    </div>
+    </>
   )
 }
 export default Item

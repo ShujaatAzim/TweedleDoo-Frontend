@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Item from './Item'
 import EditListForm from './EditListForm'
-import { Button } from 'semantic-ui-react'
+import { Button, Grid } from 'semantic-ui-react'
 
 const List = props => {
 
@@ -22,7 +22,7 @@ const List = props => {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       <h3>
         { currentList.name }
       </h3>
@@ -42,7 +42,11 @@ const List = props => {
         : null }
       <br />
       <br />
-      { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
+      <div>
+        <Grid columns={2} divided>
+          { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
+        </Grid>
+      </div>
       <br />
     </div>
   )

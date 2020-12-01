@@ -32,11 +32,10 @@ const EditItemForm = props => {
 
   return (
     <div>
-      <br />
       <form onSubmit={e => editItem(e, item.id)}>
         <Input type="text" placeholder={item.content} onChange={e => setNewContent(e.target.value)} />
         <Button.Group>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" positive>Submit</Button>
           <Button.Or />
           <Button type="button" onClick={() => setEdit(false)}>Cancel</Button>
         </Button.Group>

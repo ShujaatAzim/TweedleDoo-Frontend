@@ -47,11 +47,11 @@ const Item = props => {
             <EditItemForm item={item} getItems={getItems} setEdit={setEdit} />
               :
             <Button.Group>
-              <Button onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
+              <Button positive onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
               <Button.Or />
-              <Button onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
+              <Button primary onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
               <Button.Or />
-              <Button onClick={() => deleteItem(item.id)}>Delete Item</Button>
+              <Button negative onClick={() => deleteItem(item.id)}>Delete Item</Button>
             </Button.Group>
           }
         </Grid.Column>

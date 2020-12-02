@@ -5,7 +5,7 @@ import { Button, Grid } from 'semantic-ui-react'
 
 const List = props => {
 
-  const { currentList, getItems, currentItems, setCurrentList, getLists, reGetList } = props
+  const { currentList, getItems, currentItems, setCurrentList, getLists, handleList } = props
 
   const [editingName, setEditingName] = useState(false)
 
@@ -38,7 +38,7 @@ const List = props => {
         </div>
       }
       { editingName ? 
-          <EditListForm reGetList={reGetList} currentList={currentList} setEditingName={setEditingName} /> 
+          <EditListForm handleList={handleList} currentList={currentList} setEditingName={setEditingName} /> 
         : null }
       <br />
       <br />

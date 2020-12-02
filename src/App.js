@@ -29,8 +29,8 @@ const App = () => {
     .then(lists => setAllLists(lists))
   }
 
-  const handleCurrentList = e => {
-    fetch(`http://localhost:3000/lists/${e.target.value}`)
+  const handleList = id => {
+    fetch(`http://localhost:3000/lists/${id}`)
     .then(resp => resp.json())
     .then(list => setCurrentList(list))
   }
@@ -43,7 +43,7 @@ const App = () => {
       <div>
         <label>Choose a List</label>
         <div>
-          <select name="lists" defaultValue="" onChange={e => handleCurrentList(e)}>
+          <select name="lists" defaultValue="" onChange={e => handleList(e.target.value)}>
             <option value="" disabled hidden>Choose here</option>
             { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
           </select>
@@ -66,7 +66,8 @@ const App = () => {
       { currentList ? 
       <div>
         <div>
-          <ListContainer allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} getItems={getItems} getLists={getLists} />
+          <ListContainer allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} handleList={handleList} 
+            getItems={getItems} getLists={getLists} />
         </div>
         <div>
           <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />

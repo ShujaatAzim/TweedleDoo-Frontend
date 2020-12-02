@@ -39,28 +39,29 @@ const App = () => {
     <div style={{ textAlign: "center" }}>
       <h1>TweedleDoo</h1>
       <h6>By Shujaat Azim</h6>
-      { currentList ? null : 
+      { currentList || creatingList ? null :
       <div>
         <label>Choose a List</label>
         <div>
-          <select name="lists" disabled={creatingList} defaultValue="" onChange={e => handleCurrentList(e)}>
+          <select name="lists" defaultValue="" onChange={e => handleCurrentList(e)}>
             <option value="" disabled hidden>Choose here</option>
             { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
           </select>
         </div>
       </div> }
       <br />
-      { !currentList ?
+      { !currentList && !creatingList ?
         <div>
           Or, create new list!
           <div>
-            <Button disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</Button>
+            <Button primary disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</Button>
           </div>
         </div> : null 
       }
-      <div>
-        { creatingList ? <NewListForm getLists={getLists} setCreatingList={setCreatingList} /> : null }
-      </div>
+      { creatingList ? 
+        <div>
+          <NewListForm getLists={getLists} setCreatingList={setCreatingList} />
+        </div> : null }
       <br />
       { currentList ? 
       <div>

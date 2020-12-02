@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Input } from 'semantic-ui-react'
 
 const NewListForm = props => {
 
@@ -33,12 +33,11 @@ const NewListForm = props => {
   return (
     <div>
       <form onSubmit={e => createList(e)}>
-        <label>New List Name:</label>
-        <input type="text" value={newListName} placeholder="new list name" onChange={e => setNewListName(e.target.value)} />
+        <Input type="text" value={newListName} placeholder="new list name" onChange={e => setNewListName(e.target.value)} />
         <Button.Group>
-          <Button type="submit" positive>Submit</Button>
+          <Button type="submit" primary>Submit</Button>
           <Button.Or />
-          <Button type="button" onClick={() => setCreatingList(false)}>Cancel</Button>
+          <Button type="button" negative onClick={() => setCreatingList(false)}>Cancel</Button>
         </Button.Group>
       </form>
     </div>

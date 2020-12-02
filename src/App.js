@@ -35,12 +35,6 @@ const App = () => {
     .then(list => setCurrentList(list))
   }
 
-  const reGetList = id => {
-    fetch(`http://localhost:3000/lists/${id}`)
-    .then(resp => resp.json())
-    .then(list => setCurrentList(list))
-  }
-
   return (
     <div style={{ textAlign: "center" }}>
       <h1>TweedleDoo</h1>
@@ -72,7 +66,7 @@ const App = () => {
       { currentList ? 
       <div>
         <div>
-          <ListContainer reGetList={reGetList} allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} getItems={getItems} getLists={getLists} />
+          <ListContainer allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} getItems={getItems} getLists={getLists} />
         </div>
         <div>
           <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />

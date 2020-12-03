@@ -48,7 +48,8 @@ const App = () => {
             { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
           </select>
         </div>
-      </div> }
+      </div> 
+      }
       <br />
       { !currentList && !creatingList ?
         <div>

@@ -3,7 +3,7 @@ import { Button, Input } from 'semantic-ui-react'
 
 const EditListForm = props => {
 
-  const { currentList, setEditingName, handleList } = props
+  const { currentList, setEditingName, handleList, getLists } = props
 
   const [newName, setNewName] = useState(currentList.name)
 
@@ -21,6 +21,7 @@ const EditListForm = props => {
     })
     .then(() => setNewName(""))
     .then(() => setEditingName(false))
+    .then(() => getLists())
     .then(() => handleList(currentList.id))
   }
 

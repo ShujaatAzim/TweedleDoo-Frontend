@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import ItemFormContainer from './ContainerComponents/ItemFormContainer'
 import NewListForm from './Components/NewListForm'
-import { Button } from 'semantic-ui-react'
+import { Button, Select } from 'semantic-ui-react'
 
 const App = () => {
 
@@ -35,6 +35,9 @@ const App = () => {
     .then(list => setCurrentList(list))
   }
 
+  let options = []
+  allLists.map(list => options.push({ key: list.id, value: list.id, text: list.name }))
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1>TweedleDoo</h1>
@@ -43,10 +46,7 @@ const App = () => {
       <div>
         <label>Choose a List</label>
         <div>
-          <select name="lists" defaultValue="" onChange={e => handleList(e.target.value)}>
-            <option value="" disabled hidden>Choose here</option>
-            { allLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>) }
-          </select>
+          <Select placeholder="Choose List" options={options} onChange={(e, data) => handleList(data.value)}/>
         </div>
       </div> 
       }

@@ -38,7 +38,7 @@ const List = props => {
         </div>
       }
       { editingName ? 
-          <EditListForm handleList={handleList} currentList={currentList} setEditingName={setEditingName} /> 
+          <EditListForm handleList={handleList} getLists={getLists} currentList={currentList} setEditingName={setEditingName} /> 
         : null }
       <br />
       <br />

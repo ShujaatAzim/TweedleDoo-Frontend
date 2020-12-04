@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddItemForm from '../FormComponents/AddItemForm'
 
 const ItemFormContainer = props => {
 
-  const { newItem, setNewItem, currentList, getItems } = props
+  const [newItem, setNewItem] = useState("".trim())
+
   return (
     <div>
-      <AddItemForm newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />
+      <AddItemForm {...props} newItem={newItem} setNewItem={setNewItem} />
     </div>
   )
 }

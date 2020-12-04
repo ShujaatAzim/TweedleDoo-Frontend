@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
-import ItemFormContainer from './ContainerComponents/ItemFormContainer'
 import NewListForm from './MainComponents/NewListForm'
 import { useRecoilState } from 'recoil'
 import { currentListState } from './Recoil/atoms'
@@ -10,7 +9,6 @@ const App = () => {
 
   const [allItems, setAllItems] = useState([])
   const [allLists, setAllLists] = useState([])
-  const [newItem, setNewItem] = useState("".trim())
   const [creatingList, setCreatingList] = useState(false)
   const [currentList, setCurrentList] = useRecoilState(currentListState)
 
@@ -61,21 +59,8 @@ const App = () => {
           </div>
         </div> : null 
       }
-      { creatingList ? 
-        <div>
-          <NewListForm getLists={getLists} setCreatingList={setCreatingList} />
-        </div> : null }
-      <br />
-      { currentList ? 
-      <div>
-        <div>
-          <ListContainer allItems={allItems} handleList={handleList} getItems={getItems} getLists={getLists} />
-        </div>
-        <div>
-          <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />
-        </div>
-      </div> : null 
-      }
+      { creatingList ? <div><NewListForm getLists={getLists} setCreatingList={setCreatingList} /></div> : null }
+      { currentList ? <div><ListContainer allItems={allItems} handleList={handleList} getItems={getItems} getLists={getLists} /></div> : null }
     </div>
   )
 }

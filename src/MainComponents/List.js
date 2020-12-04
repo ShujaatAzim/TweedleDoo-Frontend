@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Item from './Item'
-import EditListForm from './EditListForm'
-import { currentListState } from '../Recoil/atoms'
+import EditListForm from '../FormComponents/EditListForm'
 import { useRecoilState } from 'recoil'
+import { currentListState } from '../Recoil/atoms'
 import { Button, Grid } from 'semantic-ui-react'
 
 const List = props => {

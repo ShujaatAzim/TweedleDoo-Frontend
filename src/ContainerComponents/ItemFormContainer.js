@@ -1,5 +1,5 @@
 import React from 'react'
-import AddItemForm from '../Components/AddItemForm'
+import AddItemForm from '../FormComponents/AddItemForm'
 
 const ItemFormContainer = props => {
 

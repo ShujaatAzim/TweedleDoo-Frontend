@@ -1,7 +1,7 @@
 import React from 'react'
-import List from '../Components/List'
-import { currentListState } from '../Recoil/atoms'
+import List from '../MainComponents/List'
 import { useRecoilValue } from 'recoil'
+import { currentListState } from '../Recoil/atoms'
 
 const ListContainer = props => {
 

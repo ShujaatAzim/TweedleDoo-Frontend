@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import ItemFormContainer from './ContainerComponents/ItemFormContainer'
-import NewListForm from './Components/NewListForm'
+import NewListForm from './MainComponents/NewListForm'
 import { useRecoilState } from 'recoil'
 import { currentListState } from './Recoil/atoms'
 import { Button, Select } from 'semantic-ui-react'

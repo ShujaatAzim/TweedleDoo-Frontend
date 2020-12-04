@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import EditItemForm from './EditItemForm'
+import EditItemForm from '../FormComponents/EditItemForm'
 import { Button, Grid } from 'semantic-ui-react'
 
 const Item = props => {

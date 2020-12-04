@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Item from './Item'
 import EditListForm from './EditListForm'
+import { currentListState } from '../Recoil/atoms'
+import { useRecoilState } from 'recoil'
 import { Button, Grid } from 'semantic-ui-react'
 
 const List = props => {
 
-  const { currentList, getItems, currentItems, setCurrentList, getLists, handleList } = props
+  const { getItems, currentItems, getLists, handleList } = props
 
+  const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [editingName, setEditingName] = useState(false)
 
   const deleteList = () => {

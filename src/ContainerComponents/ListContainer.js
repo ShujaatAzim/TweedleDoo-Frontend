@@ -1,9 +1,12 @@
 import React from 'react'
 import List from '../Components/List'
+import { currentListState } from '../Recoil/atoms'
+import { useRecoilValue } from 'recoil'
 
 const ListContainer = props => {
 
-  const { currentList, allItems } = props
+  const currentList = useRecoilValue(currentListState)
+  const { allItems } = props
 
   let currentItems = allItems.filter(item => item.list_id === currentList.id)
   let completedItems = [...currentItems]

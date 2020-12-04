@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import ItemFormContainer from './ContainerComponents/ItemFormContainer'
 import NewListForm from './Components/NewListForm'
+import { useRecoilState } from 'recoil'
+import { currentListState } from './Recoil/atoms'
 import { Button, Select } from 'semantic-ui-react'
 
 const App = () => {
@@ -10,7 +12,7 @@ const App = () => {
   const [allLists, setAllLists] = useState([])
   const [newItem, setNewItem] = useState("".trim())
   const [creatingList, setCreatingList] = useState(false)
-  const [currentList, setCurrentList] = useState(null)
+  const [currentList, setCurrentList] = useRecoilState(currentListState)
 
   useEffect(() => {
     getItems()
@@ -67,8 +69,7 @@ const App = () => {
       { currentList ? 
       <div>
         <div>
-          <ListContainer allItems={allItems} currentList={currentList} setCurrentList={setCurrentList} handleList={handleList} 
-            getItems={getItems} getLists={getLists} />
+          <ListContainer allItems={allItems} handleList={handleList} getItems={getItems} getLists={getLists} />
         </div>
         <div>
           <ItemFormContainer newItem={newItem} setNewItem={setNewItem} currentList={currentList} getItems={getItems} />

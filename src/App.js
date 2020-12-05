@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
-import NewListForm from './MainComponents/NewListForm'
+import NewListForm from './FormComponents/NewListForm'
 import { useRecoilState } from 'recoil'
 import { currentListState } from './Recoil/atoms'
 import { Button, Select } from 'semantic-ui-react'
@@ -59,7 +59,7 @@ const App = () => {
           </div>
         </div> : null 
       }
-      { creatingList ? <div><NewListForm getLists={getLists} setCreatingList={setCreatingList} /></div> : null }
+      { creatingList ? <div><NewListForm getLists={getLists} handleList={handleList} setCreatingList={setCreatingList} /></div> : null }
       { currentList ? <div><ListContainer allItems={allItems} handleList={handleList} getItems={getItems} getLists={getLists} /></div> : null }
     </div>
   )

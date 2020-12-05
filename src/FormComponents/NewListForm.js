@@ -3,7 +3,7 @@ import { Button, Input } from 'semantic-ui-react'
 
 const NewListForm = props => {
 
-  const { getLists, setCreatingList } = props
+  const { getLists, setCreatingList, handleList } = props
 
   const [newListName, setNewListName] = useState("")
 
@@ -21,8 +21,10 @@ const NewListForm = props => {
       },
       body: JSON.stringify(payload)
     })
-    .then(() => setNewListName(""))
+    .then(resp => resp.json())
+    .then(newList => handleList(newList.id))
     .then(() => getLists())
+    .then(() => setNewListName(""))
     .then(() => setCreatingList(false))
     } else {
       alert("It can't be blank, dawg")
@@ -32,6 +34,7 @@ const NewListForm = props => {
 
   return (
     <div>
+      <label>Create a new list!</label>
       <form onSubmit={e => createList(e)}>
         <Input type="text" value={newListName} placeholder="new list name" onChange={e => setNewListName(e.target.value)} />
         <Button.Group>

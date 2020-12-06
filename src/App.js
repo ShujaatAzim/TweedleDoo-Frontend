@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import NewListForm from './FormComponents/NewListForm'
 import { useRecoilState } from 'recoil'
-import { currentListState } from './Recoil/atoms'
+import { currentListState, allItemsState, allListsState } from './Recoil/atoms'
 import { Button, Select } from 'semantic-ui-react'
 
 const App = () => {
 
-  const [allItems, setAllItems] = useState([])
-  const [allLists, setAllLists] = useState([])
-  const [creatingList, setCreatingList] = useState(false)
+  const [allItems, setAllItems] = useRecoilState(allItemsState)
+  const [allLists, setAllLists] = useRecoilState(allListsState)
   const [currentList, setCurrentList] = useRecoilState(currentListState)
+  const [creatingList, setCreatingList] = useState(false)
 
   useEffect(() => {
     getItems()

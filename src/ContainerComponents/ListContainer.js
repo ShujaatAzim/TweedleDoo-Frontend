@@ -24,7 +24,7 @@ const ListContainer = props => {
           "List complete! Yay!" }
       </div>
       <div>
-        <ItemFormContainer currentList={currentList} getItems={getItems} />
+        <ItemFormContainer getItems={getItems}/>
       </div>
     </div>
   )

@@ -1,9 +1,13 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { currentListState } from '../Recoil/atoms'
 import { Button, Input } from 'semantic-ui-react'
 
 const AddItemForm = props => {
 
-  const { newItem, getItems, setNewItem, currentList } = props
+  const currentList = useRecoilValue(currentListState)
+
+  const { newItem, getItems, setNewItem } = props
 
   const addNewItem = e => {
     e.preventDefault()

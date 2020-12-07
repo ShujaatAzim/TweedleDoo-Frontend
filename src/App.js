@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ListContainer from './ContainerComponents/ListContainer'
 import NewListForm from './FormComponents/NewListForm'
 import { useRecoilState } from 'recoil'
-import { currentListState } from './Recoil/atoms'
+import { currentListState, creatingListState } from './Recoil/atoms'
 import { Button, Select } from 'semantic-ui-react'
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   const [allItems, setAllItems] = useState([])
   const [allLists, setAllLists] = useState([])
   const [currentList, setCurrentList] = useRecoilState(currentListState)
-  const [creatingList, setCreatingList] = useState(false)
+  const [creatingList, setCreatingList] = useRecoilState(creatingListState)
 
   useEffect(() => {
     getItems()

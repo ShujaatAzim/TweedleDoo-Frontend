@@ -5,12 +5,7 @@ export const currentListState = atom({
   default: null
 })
 
-export const allItemsState = atom({
-  key: "allItems",
-  default: []
-})
-
-export const allListsState = atom({
-  key: "allLists",
-  default: []
+export const creatingListState = atom({
+  key: "creatingList",
+  default: false
 })

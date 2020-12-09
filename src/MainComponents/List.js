@@ -7,7 +7,7 @@ import { Button, Grid } from 'semantic-ui-react'
 
 const List = props => {
 
-  const { getItems, currentItems, getLists, handleList } = props
+  const { currentItems, getItems, getLists, handleList } = props
 
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [editingName, setEditingName] = useState(false)

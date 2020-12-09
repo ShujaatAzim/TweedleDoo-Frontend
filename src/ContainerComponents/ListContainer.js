@@ -16,7 +16,7 @@ const ListContainer = props => {
   return (
     <div>
       <div>
-        <List {...props} currentItems={currentItems} />
+        <List currentItems={currentItems} {...props} />
       </div>
       <div>
         { currentItems.length === 0 ? "No items! Add some below:" : 

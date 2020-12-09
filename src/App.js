@@ -55,7 +55,7 @@ const App = () => {
         <div>
           Or, create new list!
           <div>
-            <Button primary disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(!creatingList)}}>Create List</Button>
+            <Button primary disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(true)}}>Create List</Button>
           </div>
         </div> : null 
       }

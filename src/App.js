@@ -3,7 +3,7 @@ import ListContainer from './ContainerComponents/ListContainer'
 import NewListForm from './FormComponents/NewListForm'
 import { useRecoilState } from 'recoil'
 import { currentListState, creatingListState } from './Recoil/atoms'
-import { Button, Select } from 'semantic-ui-react'
+import { Button, Select, Header } from 'semantic-ui-react'
 
 const App = () => {
 
@@ -40,8 +40,10 @@ const App = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>TweedleDoo</h1>
-      <h6>By Shujaat Azim</h6>
+      <Header as="h1" attached>
+        <Header.Content>TweedleDoo</Header.Content>
+      </Header>
+      <Header as="h6">By Shujaat Azim</Header>
       { currentList || creatingList ? null :
       <div>
         <label>Choose a List</label>

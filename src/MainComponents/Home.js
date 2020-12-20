@@ -6,7 +6,9 @@ import { Menu } from 'semantic-ui-react'
 const Home = () => {
   return (
     <div>
-      <Menu />
+      <Menu poiniting secondary>
+        <Menu.Item name="home" />
+      </Menu>
     </div>
   )
 }

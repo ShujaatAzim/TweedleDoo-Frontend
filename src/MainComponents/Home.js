@@ -9,6 +9,7 @@ const Home = () => {
       <Menu poiniting secondary>
         <Menu.Item name="home" />
       </Menu>
+      
     </div>
   )
 }

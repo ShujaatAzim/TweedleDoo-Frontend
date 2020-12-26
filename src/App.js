@@ -55,7 +55,7 @@ const App = () => {
       <br />
       { !currentList && !creatingList ?
         <div>
-          Or, create new list!
+          <h4>Or, create new list!</h4>
           <div>
             <Button primary disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(true)}}>Create List</Button>
           </div>

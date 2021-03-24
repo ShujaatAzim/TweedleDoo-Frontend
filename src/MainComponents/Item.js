@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import EditItemForm from '../FormComponents/EditItemForm'
-import { Button, Grid } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import EditItemForm from '../FormComponents/EditItemForm';
+import { Button, Grid } from 'semantic-ui-react';
 
 const Item = props => {
 
@@ -59,6 +59,6 @@ const Item = props => {
       <br />
       <br />
     </>
-  )
+  );
 }
-export default Item
+export default Item;

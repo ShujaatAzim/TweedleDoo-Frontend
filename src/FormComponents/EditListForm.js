@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, Input } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Button, Input } from 'semantic-ui-react';
 
 const EditListForm = props => {
 
@@ -36,7 +36,7 @@ const EditListForm = props => {
         </Button.Group>
       </form>
     </div>
-  )
+  );
 }
 
-export default EditListForm
+export default EditListForm;

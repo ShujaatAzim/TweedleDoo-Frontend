@@ -1,7 +1,7 @@
-import React from 'react'
-import { useRecoilValue } from 'recoil'
-import { currentListState } from '../Recoil/atoms'
-import { Button, Input } from 'semantic-ui-react'
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { currentListState } from '../Recoil/atoms';
+import { Button, Input } from 'semantic-ui-react';
 
 const AddItemForm = props => {
 
@@ -41,7 +41,7 @@ const AddItemForm = props => {
         </Button.Group>
       </form>
     </div>
-  )
+  );
 }
 
-export default AddItemForm
+export default AddItemForm;

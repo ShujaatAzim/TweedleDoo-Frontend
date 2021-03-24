@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import AddItemForm from '../FormComponents/AddItemForm'
+import React, { useState } from 'react';
+import AddItemForm from '../FormComponents/AddItemForm';
 
 const ItemFormContainer = props => {
 
@@ -9,7 +9,7 @@ const ItemFormContainer = props => {
     <div>
       <AddItemForm {...props} newItem={newItem} setNewItem={setNewItem} />
     </div>
-  )
+  );
 }
 
-export default ItemFormContainer
+export default ItemFormContainer;

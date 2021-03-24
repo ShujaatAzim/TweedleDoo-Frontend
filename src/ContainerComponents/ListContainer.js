@@ -1,8 +1,8 @@
-import React from 'react'
-import List from '../MainComponents/List'
-import ItemFormContainer from '../ContainerComponents/ItemFormContainer'
-import { useRecoilValue } from 'recoil'
-import { currentListState } from '../Recoil/atoms'
+import React from 'react';
+import List from '../MainComponents/List';
+import ItemFormContainer from '../ContainerComponents/ItemFormContainer';
+import { useRecoilValue } from 'recoil';
+import { currentListState } from '../Recoil/atoms';
 
 const ListContainer = props => {
 
@@ -27,7 +27,7 @@ const ListContainer = props => {
         <ItemFormContainer getItems={getItems}/>
       </div>
     </div>
-  )
+  );
 }
 
 export default ListContainer;

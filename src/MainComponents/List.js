@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import Item from './Item'
-import EditListForm from '../FormComponents/EditListForm'
-import { useRecoilState } from 'recoil'
-import { currentListState } from '../Recoil/atoms'
-import { Button, Grid } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import Item from './Item';
+import EditListForm from '../FormComponents/EditListForm';
+import { useRecoilState } from 'recoil';
+import { currentListState } from '../Recoil/atoms';
+import { Button, Grid } from 'semantic-ui-react';
 
 const List = props => {
 
@@ -52,7 +52,7 @@ const List = props => {
       </div>
       <br />
     </div>
-  )
+  );
 }
 
-export default List
+export default List;

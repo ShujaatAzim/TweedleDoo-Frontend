@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, Input } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Button, Input } from 'semantic-ui-react';
 
 const NewListForm = props => {
 
@@ -44,7 +44,7 @@ const NewListForm = props => {
         </Button.Group>
       </form>
     </div>
-  )
+  );
 }
 
-export default NewListForm
+export default NewListForm;

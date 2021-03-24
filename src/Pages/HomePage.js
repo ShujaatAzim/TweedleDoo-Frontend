@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { currentListState, creatingListState } from '../Recoil/atoms';
 import { Button, Select } from 'semantic-ui-react';
 
-const Home = () => {
+const HomePage = () => {
 
   const [allItems, setAllItems] = useState([])
   const [allLists, setAllLists] = useState([])
@@ -63,4 +63,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default HomePage;

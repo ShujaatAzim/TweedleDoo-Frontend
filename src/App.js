@@ -1,9 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './MainComponents/Home';
-import Profile from './MainComponents/Profile';
-import Login from './MainComponents/Login';
-import Register from './MainComponents/Register';
+import HomePage from './Pages/HomePage';
+import ProfilePage from './Pages/ProfilePage';
+import LoginPage from './Pages/LoginPage';
+import RegisterPage from './Pages/RegisterPage';
+import AboutPage from './Pages/AboutPage';
 import { Header } from 'semantic-ui-react';
 
 const App = () => {
@@ -18,10 +19,11 @@ const App = () => {
       </div>
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/profile" component={ProfilePage} />
         </Switch>
       </div>
     </div>

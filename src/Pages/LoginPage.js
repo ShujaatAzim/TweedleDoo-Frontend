@@ -9,11 +9,11 @@ const LoginPage = () => {
   return (
     <div>
       <Button.Group>
-        <Button type="button" positive onClick={() => history.push("/home")}>Home</Button>
+        <Button type="button" primary onClick={() => history.push("/home")}>Home</Button>
         <Button.Or />
-        <Button type="button" positive onClick={() => history.push("/about")}>About</Button>
+        <Button type="button" primary onClick={() => history.push("/about")}>About</Button>
         <Button.Or />
-        <Button type="button" positive onClick={() => history.push("/register")}>Register</Button>
+        <Button type="button" primary onClick={() => history.push("/register")}>Register</Button>
       </Button.Group>
     </div>
   );

@@ -29,6 +29,7 @@ const RegisterPage = () => {
 
   return (
     <div>
+      <h1>Register here!</h1>
       <form onSubmit={e => handleSubmit(e, username, password)}>
         <label>Email</label>
         <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />

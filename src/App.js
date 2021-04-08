@@ -16,8 +16,10 @@ const App = () => {
           <Header.Content>TweedleDoo</Header.Content>
         </Header>
         <Header as="h6">By Shujaat Azim</Header> 
+        <br />
       </div>
       <div>
+        <br />
         <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/home" component={HomePage} />

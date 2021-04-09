@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Form } from 'semantic-ui-react';
 
 const RegisterPage = () => {
 
@@ -30,13 +31,19 @@ const RegisterPage = () => {
   return (
     <div>
       <h1>Register here!</h1>
-      <form onSubmit={e => handleSubmit(e, username, password)}>
-        <label>Email</label>
-        <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
-        <label>Password</label>
-        <input type="text" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-        <input type="submit" />
-      </form>
+      <div style={{ margin: "auto", width: "40%" }}>
+        <Form onSubmit={e => handleSubmit(e, username, password)}>
+          <Form.Field>
+            <label>Email</label>
+            <input type="text" placeholder="email" value={username} onChange={e => setUsername(e.target.value)} />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input type="text" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
+          </Form.Field>
+          <Button primary type="submit">Register</Button>
+        </Form>
+      </div>
     </div>
   );
 }

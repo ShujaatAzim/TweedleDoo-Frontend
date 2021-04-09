@@ -25,7 +25,7 @@ const LoginPage = () => {
       <br />
       <br />
       <div>
-        <h2>or, one of these:</h2>
+        <h2>or, choose one of these options:</h2>
         <Button.Group>
           <Button type="button" primary onClick={() => history.push("/home")}>Home</Button>
           <Button.Or />

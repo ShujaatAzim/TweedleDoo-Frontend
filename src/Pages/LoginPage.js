@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
 const LoginPage = () => {
 
   const history = useHistory();
+  
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   return (
     <div>

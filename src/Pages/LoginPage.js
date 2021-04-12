@@ -5,22 +5,27 @@ import { Button, Form } from 'semantic-ui-react';
 const LoginPage = () => {
 
   const history = useHistory();
-  
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const handleLogin = e => {
+    e.preventDefault();
+    console.log(email, password)
+  }
 
   return (
     <div>
       <h1>Log in!</h1>
       <div style={{ margin: "auto", width: "40%" }}>
-        <Form>
+        <Form onSubmit={e => handleLogin(e)}>
           <Form.Field>
             <label>Email</label>
-            <input placeholder="email" />
+            <input placeholder="email" onChange={e => setEmail(e.target.value)} />
           </Form.Field>
           <Form.Field>
             <label>Password</label>
-            <input type="password" placeholder="password" />
+            <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
           </Form.Field>
           <Button primary type="submit">Log In</Button>
         </Form>

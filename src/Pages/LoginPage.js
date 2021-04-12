@@ -11,7 +11,13 @@ const LoginPage = () => {
 
   const handleLogin = e => {
     e.preventDefault();
-    console.log(email, password)
+    let loginCredentials = {
+      "user": {
+        "email": email,
+        "password": password
+      }
+    }
+    console.log(loginCredentials)
   }
 
   return (

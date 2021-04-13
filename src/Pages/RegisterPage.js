@@ -6,7 +6,7 @@ const RegisterPage = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e, username, password) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let newUser = { 
       "user": {
@@ -32,14 +32,14 @@ const RegisterPage = () => {
     <div>
       <h1>Register here!</h1>
       <div style={{ margin: "auto", width: "40%" }}>
-        <Form onSubmit={e => handleSubmit(e, username, password)}>
+        <Form onSubmit={e => handleSubmit(e)}>
           <Form.Field>
             <label>Email</label>
             <input type="text" placeholder="email" value={username} onChange={e => setUsername(e.target.value)} />
           </Form.Field>
           <Form.Field>
             <label>Password</label>
-            <input type="text" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Field>
           <Button primary type="submit">Register</Button>
         </Form>

@@ -12,12 +12,21 @@ const LoginPage = () => {
   const handleLogin = e => {
     e.preventDefault();
     let loginCredentials = {
-      "user": {
-        "email": email,
-        "password": password
-      }
+      "username": email,
+      "password": password
     }
-    console.log(loginCredentials)
+    fetch('http://localhost:3000/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ user: loginCredentials })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .then(() => setEmail(""))
+    .then(() => setPassword(""))
   }
 
   return (
@@ -27,11 +36,11 @@ const LoginPage = () => {
         <Form onSubmit={e => handleLogin(e)}>
           <Form.Field>
             <label>Email</label>
-            <input placeholder="email" onChange={e => setEmail(e.target.value)} />
+            <input placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
           </Form.Field>
           <Form.Field>
             <label>Password</label>
-            <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+            <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Field>
           <Button primary type="submit">Log In</Button>
         </Form>

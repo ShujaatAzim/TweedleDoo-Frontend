@@ -1,13 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import ProfilePage from './Pages/ProfilePage';
-import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import AboutPage from './Pages/AboutPage';
+import LoginPage from './Pages/LoginPage';
+import ProfilePage from './Pages/ProfilePage';
+import NotFoundPage from './Pages/NotFoundPage';
 import { Header } from 'semantic-ui-react';
 
 const App = () => {
+
+  let logged = JSON.parse(localStorage.getItem("dooCreds"))
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -19,14 +22,22 @@ const App = () => {
         <br />
       </div>
       <div>
-        <br />
-        <Switch>
-          <Route exact path="/" component={LoginPage} />
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/register" component={RegisterPage} />
-          <Route exact path="/profile" component={ProfilePage} />
-        </Switch>
+      <br />
+      { logged ? 
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/profile" component={ProfilePage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      : 
+      <Switch>
+        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/register" component={RegisterPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      }
       </div>
     </div>
   );

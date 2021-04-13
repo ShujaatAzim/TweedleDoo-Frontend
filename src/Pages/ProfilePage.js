@@ -1,10 +1,13 @@
 import React from 'react';
 
 const ProfilePage = () => {
+
+  const creds = JSON.parse(localStorage.getItem("dooCreds"))
+
   return (
     <div>
-      <h1>This is the profile page.</h1>
-      <h2>It will have the account settings for the user.</h2>
+      <h1>{creds.username}'s page.</h1>
+      <p><b>TOKEN:</b> {creds.jwt}</p>
     </div>
   );
 }

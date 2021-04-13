@@ -24,9 +24,10 @@ const LoginPage = () => {
       body: JSON.stringify({ user: loginCredentials })
     })
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
     .then(() => setEmail(""))
     .then(() => setPassword(""))
+    .then(() => history.push('/profile'))
   }
 
   return (

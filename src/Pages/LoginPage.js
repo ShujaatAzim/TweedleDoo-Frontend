@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
-const LoginPage = () => {
+const LoginPage = props => {
 
   const history = useHistory();
 
@@ -25,8 +25,7 @@ const LoginPage = () => {
     })
     .then(resp => resp.json())
     .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
-    .then(() => setEmail(""))
-    .then(() => setPassword(""))
+    .then(() => props.setUser(JSON.parse(localStorage.getItem("dooCreds"))))
     .then(() => history.push('/profile'))
   }
 
@@ -49,14 +48,8 @@ const LoginPage = () => {
       <br />
       <br />
       <div>
-        <h2>or, choose one of these options:</h2>
-        <Button.Group>
-          <Button type="button" primary onClick={() => history.push("/home")}>Home</Button>
-          <Button.Or />
-          <Button type="button" primary onClick={() => history.push("/about")}>About</Button>
-          <Button.Or />
-          <Button type="button" primary onClick={() => history.push("/register")}>Register</Button>
-        </Button.Group>
+        <h3>Or sign up! It's free!</h3>
+        <Button type="button" primary onClick={() => history.push("/register")}>Register</Button>
       </div>
     </div>
   );

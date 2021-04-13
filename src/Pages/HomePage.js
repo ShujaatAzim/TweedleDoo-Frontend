@@ -12,6 +12,8 @@ const HomePage = () => {
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [creatingList, setCreatingList] = useRecoilState(creatingListState)
 
+  const user = JSON.parse(localStorage.getItem("dooCreds"))
+
   useEffect(() => {
     getItems()
     getLists()
@@ -42,6 +44,7 @@ const HomePage = () => {
     <div style={{ textAlign: "center" }}>
       { currentList || creatingList ? null :
       <div>
+        <h1>Welcome, {user.username}!</h1>
         <label>Choose a List</label>
         <div>
           <Select placeholder="Choose List" options={options} onChange={(e, data) => handleList(data.value)}/>

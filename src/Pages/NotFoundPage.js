@@ -9,7 +9,9 @@ const NotFoundPage = () => {
   return (
     <div>
       <h1>Page Not Found!</h1>
-      <Button onClick={() => history.push('/')}>Back to Safety</Button>
+      <p>You're just putting in random things after the slash, aren't you? ;)</p>
+      <br />
+      <Button primary onClick={() => history.push('/')}>Back to Civilization</Button>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
 const RegisterPage = () => {
+
+  const history = useHistory();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -43,6 +46,11 @@ const RegisterPage = () => {
           </Form.Field>
           <Button primary type="submit">Register</Button>
         </Form>
+      </div>
+      <br />
+      <br />
+      <div>
+        <Button type="button" primary onClick={() => history.push("/")}>Back</Button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import RegisterPage from './Pages/RegisterPage';
@@ -10,7 +10,7 @@ import { Header } from 'semantic-ui-react';
 
 const App = () => {
 
-  let logged = JSON.parse(localStorage.getItem("dooCreds"))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("dooCreds")))
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -23,17 +23,16 @@ const App = () => {
       </div>
       <div>
       <br />
-      { logged ? 
+      { user.logged === true ? 
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
-        <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/profile" component={ProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
       : 
       <Switch>
-        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
         <Route exact path="/register" component={RegisterPage} />
         <Route component={NotFoundPage} />
       </Switch>

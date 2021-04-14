@@ -23,7 +23,7 @@ const App = () => {
       </div>
       <div>
       <br />
-      { user.logged === true ? 
+      { user && user.logged === true ? 
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
@@ -33,7 +33,7 @@ const App = () => {
       : 
       <Switch>
         <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
-        <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/register" component={() => <RegisterPage setUser={setUser} />} /> 
         <Route component={NotFoundPage} />
       </Switch>
       }

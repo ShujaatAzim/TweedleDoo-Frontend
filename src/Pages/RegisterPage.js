@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
-const RegisterPage = () => {
+const RegisterPage = props => {
 
   const history = useHistory();
 
@@ -26,9 +26,9 @@ const RegisterPage = () => {
       body: JSON.stringify(newUser)
     })
     .then(resp => resp.json())
-    .then(data => console.log(data))
-    .then(() => setUsername(""))
-    .then(() => setPassword(""))
+    .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
+    .then(() => props.setUser(JSON.parse(localStorage.getItem("dooCreds"))))
+    .then(() => history.push('/profile'))
   }
 
   return (

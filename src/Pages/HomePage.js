@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ListContainer from '../ContainerComponents/ListContainer';
 import NewListForm from '../FormComponents/NewListForm';
 import { useRecoilState } from 'recoil';
-import { currentListState, creatingListState, listsState } from '../Recoil/atoms';
+import { currentListState, creatingListState, listsState, itemsState } from '../Recoil/atoms';
 import { Button, Select } from 'semantic-ui-react';
 
 const HomePage = () => {
 
-  const [allItems, setAllItems] = useState([])
+  const [items, setItems] = useRecoilState(itemsState)
   const [lists, setLists] = useRecoilState(listsState)
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [creatingList, setCreatingList] = useRecoilState(creatingListState)
@@ -22,7 +22,7 @@ const HomePage = () => {
   const getItems = () => {
     fetch("http://localhost:3000/items")
     .then(resp => resp.json())
-    .then(items => setAllItems(items))
+    .then(items => setItems(items))
   }
 
   const getLists = () => {
@@ -33,13 +33,13 @@ const HomePage = () => {
       }
     })
     .then(resp => resp.json())
-    .then(lists => {setLists(lists);console.log(lists)})
+    .then(lists => setLists(lists))
   }
 
   const handleList = id => {
     fetch(`http://localhost:3000/lists/${id}`)
     .then(resp => resp.json())
-    .then(list => setCurrentList(list))
+    .then(list => {setCurrentList(list);console.log(list.items)})
   }
 
   return (
@@ -64,7 +64,7 @@ const HomePage = () => {
         </div> : null 
       }
       { creatingList ? <div><NewListForm getLists={getLists} handleList={handleList} setCreatingList={setCreatingList} /></div> : null }
-      { currentList ? <div><ListContainer allItems={allItems} handleList={handleList} getItems={getItems} getLists={getLists} /></div> : null }
+      { currentList ? <div><ListContainer items={items} handleList={handleList} getItems={getItems} getLists={getLists} /></div> : null }
     </div>
   );
 }

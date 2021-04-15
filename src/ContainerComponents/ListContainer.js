@@ -7,11 +7,13 @@ import { currentListState } from '../Recoil/atoms';
 const ListContainer = props => {
 
   const currentList = useRecoilValue(currentListState)
-  const { allItems, getItems } = props
+  const { items, getItems } = props
 
-  let currentItems = allItems.filter(item => item.list_id === currentList.id)
+  let currentItems = items.filter(item => item.list_id === currentList.id)
   let completedItems = [...currentItems]
   completedItems = completedItems.filter(item => item.complete === true)
+
+  console.log(currentList.items)
 
   return (
     <div>

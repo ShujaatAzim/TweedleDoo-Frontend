@@ -10,6 +10,11 @@ export const listsState = atom({
   default: []
 })
 
+export const itemsState = atom({
+  key: "items",
+  default: []
+})
+
 export const currentListState = atom({
   key: "currentList",
   default: null

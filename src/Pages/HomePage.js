@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import ListContainer from '../ContainerComponents/ListContainer';
 import NewListForm from '../FormComponents/NewListForm';
 import { useRecoilState } from 'recoil';
-import { currentListState, creatingListState, listsState, itemsState } from '../Recoil/atoms';
+import { currentListState, creatingListState, listsState } from '../Recoil/atoms';
 import { Button, Select } from 'semantic-ui-react';
 
 const HomePage = () => {
 
-  const [items, setItems] = useRecoilState(itemsState)
   const [lists, setLists] = useRecoilState(listsState)
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [creatingList, setCreatingList] = useRecoilState(creatingListState)
@@ -15,15 +14,8 @@ const HomePage = () => {
   const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   useEffect(() => {
-    getItems()
     getLists()
   }, [])
-
-  const getItems = () => {
-    fetch("http://localhost:3000/items")
-    .then(resp => resp.json())
-    .then(items => setItems(items))
-  }
 
   const getLists = () => {
     fetch("http://localhost:3000/lists", {
@@ -39,7 +31,7 @@ const HomePage = () => {
   const handleList = id => {
     fetch(`http://localhost:3000/lists/${id}`)
     .then(resp => resp.json())
-    .then(list => {setCurrentList(list);console.log(list.items)})
+    .then(list => setCurrentList(list))
   }
 
   return (
@@ -64,7 +56,7 @@ const HomePage = () => {
         </div> : null 
       }
       { creatingList ? <div><NewListForm getLists={getLists} handleList={handleList} setCreatingList={setCreatingList} /></div> : null }
-      { currentList ? <div><ListContainer items={items} handleList={handleList} getItems={getItems} getLists={getLists} /></div> : null }
+      { currentList ? <div><ListContainer handleList={handleList} getLists={getLists} /></div> : null }
     </div>
   );
 }

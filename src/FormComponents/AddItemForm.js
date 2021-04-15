@@ -7,11 +7,11 @@ const AddItemForm = props => {
 
   const currentList = useRecoilValue(currentListState)
 
-  const { newItem, getItems, setNewItem } = props
+  const { newItem, setNewItem, handleList } = props
 
   const addNewItem = e => {
     e.preventDefault()
-    const payload = { item: {list_id: currentList.id, content: newItem, complete: false}}
+    const payload = { item: {list_id: currentList.id, content: newItem, complete: false} }
 
     if (newItem !== "") {
       fetch("http://localhost:3000/items", {
@@ -23,7 +23,7 @@ const AddItemForm = props => {
         body: JSON.stringify(payload)
       })
       .then(() => setNewItem(""))
-      .then(() => getItems())
+      .then(() => handleList(currentList.id))
     } else {
       alert("Can't add blank item!")
       setNewItem("")

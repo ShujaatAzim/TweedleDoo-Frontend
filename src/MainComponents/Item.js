@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import EditItemForm from '../FormComponents/EditItemForm';
 import { Button, Grid } from 'semantic-ui-react';
+import { useRecoilValue } from 'recoil';
+import { currentListState } from '../Recoil/atoms';
 
 const Item = props => {
 
-  const { item, getItems } = props
+  const { item, handleList } = props
 
+  const currentList = useRecoilValue(currentListState)
   const [complete, setComplete] = useState(item.complete)
   const [edit, setEdit] = useState(false)
 
@@ -13,7 +16,7 @@ const Item = props => {
     fetch(`http://localhost:3000/items/${id}`, {
       method: "DELETE"
     })
-    .then(() => getItems())
+    .then(() => handleList(currentList.id))
   }
 
   const handleComplete = id => {
@@ -28,7 +31,6 @@ const Item = props => {
         complete: !complete
       })
     })
-    .then(() => getItems())
   }
 
   const styles = {
@@ -44,7 +46,7 @@ const Item = props => {
         </Grid.Column>
         <Grid.Column style={{ paddingRight: "20%" }}>
           { edit ? 
-            <EditItemForm item={item} getItems={getItems} setEdit={setEdit} />
+            <EditItemForm item={item} handleList={handleList} currentList={currentList} setEdit={setEdit} />
               :
             <Button.Group>
               <Button positive onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>

@@ -3,7 +3,7 @@ import { Button, Input } from 'semantic-ui-react';
 
 const EditItemForm = props => {
 
-  const { item, setEdit, getItems } = props
+  const { item, setEdit, handleList, currentList } = props
 
   const [newContent, setNewContent] = useState(item.content)
 
@@ -21,11 +21,9 @@ const EditItemForm = props => {
           complete: item.complete
         })
       })
-      .then(() => setNewContent(""))
       .then(() => setEdit(false))
-      .then(() => getItems())
+      .then(() => handleList(currentList.id))
     } else {
-      setEdit(false)
       alert("Item not changed!")
     }
   }  

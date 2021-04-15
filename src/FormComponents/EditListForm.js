@@ -5,6 +5,8 @@ const EditListForm = props => {
 
   const { currentList, setEditingName, handleList, getLists } = props
 
+  const creds = JSON.parse(localStorage.getItem("dooCreds"))
+  
   const [newName, setNewName] = useState(currentList.name)
 
   const editList = (e, id) => {
@@ -13,13 +15,13 @@ const EditListForm = props => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Authorization": `Bearer ${creds.jwt}`
       },
       body: JSON.stringify({
         name: newName
       })
     })
-    .then(() => setNewName(""))
     .then(() => setEditingName(false))
     .then(() => getLists())
     .then(() => handleList(currentList.id))

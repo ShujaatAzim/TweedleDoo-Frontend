@@ -3,32 +3,31 @@ import { Button, Input } from 'semantic-ui-react';
 
 const NewListForm = props => {
 
+  const creds = JSON.parse(localStorage.getItem("dooCreds"))
   const { getLists, setCreatingList, handleList } = props
-
   const [newListName, setNewListName] = useState("")
 
   const createList = e => {
     e.preventDefault()
 
-    const payload = { list: {name: newListName} }
+    const payload = { list: {name: newListName, user_id: creds.id, items: []} }
     
     if (newListName !== "") {
       fetch('http://localhost:3000/lists', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Authorization": `Bearer ${creds.jwt}`
       },
       body: JSON.stringify(payload)
     })
     .then(resp => resp.json())
     .then(newList => handleList(newList.id))
     .then(() => getLists())
-    .then(() => setNewListName(""))
     .then(() => setCreatingList(false))
     } else {
       alert("It can't be blank, dawg")
-      setNewListName("")
     }
   }
 

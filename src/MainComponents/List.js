@@ -7,15 +7,19 @@ import { Button, Grid } from 'semantic-ui-react';
 
 const List = props => {
 
-  const { currentItems, getItems, getLists, handleList } = props
+  const { getLists, handleList } = props
+  const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [editingName, setEditingName] = useState(false)
 
   const deleteList = () => {
-    if (currentItems.length === 0) {
+    if (currentList.items.length === 0) {
       fetch(`http://localhost:3000/lists/${currentList.id}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${creds.jwt}`
+        }
       })
       .then(() => setCurrentList(null))
       .then(() => getLists())
@@ -47,7 +51,7 @@ const List = props => {
       <br />
       <div>
         <Grid columns={2} divided>
-          { currentItems.map(item => <Item key={item.id} item={item} getItems={getItems} />) }
+          { currentList.items.map(item => <Item key={item.id} item={item} handleList={handleList} />) }
         </Grid>
       </div>
       <br />

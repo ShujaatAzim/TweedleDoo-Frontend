@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { userState, listsState } from '../Recoil/atoms';
 
 const ProfilePage = () => {
 
   const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
+  const [user, setUser] = useRecoilState(userState)
+  const [lists, setLists] = useRecoilState(listsState)
+
+  useEffect(() => {
+    const creds = JSON.parse(localStorage.getItem("dooCreds"))
+    fetch('http://localhost:3000/profile', {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${creds.jwt}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {setLists(data.lists);setUser(data.user);console.log(data)})
+  }, [])
+
   return (
     <div>
-      <h1>{creds.username}'s page.</h1>
+      <h1>{user.username}'s page.</h1>
       <p><b>TOKEN:</b> {creds.jwt}</p>
+      <p>Number of Lists: {lists.length}</p>
     </div>
   );
 }

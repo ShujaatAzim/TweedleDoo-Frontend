@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react';
 import ListContainer from '../ContainerComponents/ListContainer';
 import NewListForm from '../FormComponents/NewListForm';
 import { useRecoilState } from 'recoil';
-import { currentListState, creatingListState } from '../Recoil/atoms';
+import { currentListState, creatingListState, listsState } from '../Recoil/atoms';
 import { Button, Select } from 'semantic-ui-react';
 
 const HomePage = () => {
 
   const [allItems, setAllItems] = useState([])
-  const [allLists, setAllLists] = useState([])
+  const [lists, setLists] = useRecoilState(listsState)
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [creatingList, setCreatingList] = useRecoilState(creatingListState)
 
-  const user = JSON.parse(localStorage.getItem("dooCreds"))
+  const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   useEffect(() => {
-    getItems()
     getLists()
   }, [])
 
@@ -26,9 +25,14 @@ const HomePage = () => {
   }
 
   const getLists = () => {
-    fetch("http://localhost:3000/lists")
+    fetch("http://localhost:3000/lists", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${creds.jwt}`
+      }
+    })
     .then(resp => resp.json())
-    .then(lists => setAllLists(lists))
+    .then(lists => {setLists(lists);console.log(lists)})
   }
 
   const handleList = id => {
@@ -37,17 +41,15 @@ const HomePage = () => {
     .then(list => setCurrentList(list))
   }
 
-  let options = []
-  allLists.map(list => options.push({ key: list.id, value: list.id, text: list.name }))
-
   return (
     <div style={{ textAlign: "center" }}>
       { currentList || creatingList ? null :
       <div>
-        <h1>Welcome, {user.username}!</h1>
+        <h1>Welcome, {creds.username}!</h1>
         <label>Choose a List</label>
         <div>
-          <Select placeholder="Choose List" options={options} onChange={(e, data) => handleList(data.value)}/>
+          <Select placeholder="Choose List" options={lists.map(list => ({key: list.id, text: list.name, value: list.name}))} 
+            onChange={(e, data) => handleList(data.value)} />
         </div>
       </div> 
       }

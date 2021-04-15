@@ -15,6 +15,7 @@ const HomePage = () => {
   const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   useEffect(() => {
+    getItems()
     getLists()
   }, [])
 
@@ -48,7 +49,7 @@ const HomePage = () => {
         <h1>Welcome, {creds.username}!</h1>
         <label>Choose a List</label>
         <div>
-          <Select placeholder="Choose List" options={lists.map(list => ({key: list.id, text: list.name, value: list.name}))} 
+          <Select placeholder="Choose List" options={lists.map(list => ({key: list.id, text: list.name, value: list.id}))} 
             onChange={(e, data) => handleList(data.value)} />
         </div>
       </div> 

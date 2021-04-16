@@ -6,6 +6,7 @@ import AboutPage from './Pages/AboutPage';
 import LoginPage from './Pages/LoginPage';
 import ProfilePage from './Pages/ProfilePage';
 import NotFoundPage from './Pages/NotFoundPage';
+import ErrorPage from './Pages/ErrorPage';
 import { Header } from 'semantic-ui-react';
 
 const App = () => {
@@ -28,12 +29,14 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/error" component={ErrorPage} />
         <Route component={NotFoundPage} />
       </Switch>
       : 
       <Switch>
         <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
         <Route exact path="/register" component={() => <RegisterPage setUser={setUser} />} /> 
+        <Route exact path="/error" component={ErrorPage} />
         <Route component={NotFoundPage} />
       </Switch>
       }

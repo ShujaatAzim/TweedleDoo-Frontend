@@ -31,6 +31,7 @@ const Item = props => {
         complete: !complete
       })
     })
+    .then(() => handleList(currentList.id))
   }
 
   const styles = {

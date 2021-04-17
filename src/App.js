@@ -19,7 +19,8 @@ const App = () => {
       <div className="header">
         <Header as="h1">
           { user && user.logged === true ? 
-          <Menu secondary floated="right">
+          <Menu secondary fixed>
+            <Header.Content><h1>TweedleDoo</h1></Header.Content>
             <Menu.Item name="Home" onClick={() => history.push('/')} />
             <Menu.Item name="About" onClick={() => history.push('/about')}  />
             <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />

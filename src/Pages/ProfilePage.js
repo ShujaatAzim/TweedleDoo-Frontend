@@ -12,7 +12,6 @@ const ProfilePage = () => {
   const [lists, setLists] = useRecoilState(listsState)
 
   useEffect(() => {
-    const creds = JSON.parse(localStorage.getItem("dooCreds"))
     fetch('http://localhost:3000/profile', {
       method: "GET",
       headers: {
@@ -21,6 +20,7 @@ const ProfilePage = () => {
     })
     .then(resp => resp.json())
     .then(data => {setLists(data.lists);setUser(data.user);console.log(data)})
+    // eslint-disable-next-line
   }, [])
 
   const handleLogout = () => {

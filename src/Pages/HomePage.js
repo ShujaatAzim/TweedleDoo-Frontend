@@ -15,6 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getLists()
+    // eslint-disable-next-line
   }, [])
 
   const getLists = () => {
@@ -35,7 +36,7 @@ const HomePage = () => {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       { currentList || creatingList ? null :
       <div>
         <h1>Welcome, {creds.username}!</h1>

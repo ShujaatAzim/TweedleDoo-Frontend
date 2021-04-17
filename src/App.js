@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import RegisterPage from './Pages/RegisterPage';
 import AboutPage from './Pages/AboutPage';
@@ -7,22 +7,35 @@ import LoginPage from './Pages/LoginPage';
 import ProfilePage from './Pages/ProfilePage';
 import NotFoundPage from './Pages/NotFoundPage';
 import ErrorPage from './Pages/ErrorPage';
-import { Header } from 'semantic-ui-react';
+import { Header, Menu } from 'semantic-ui-react';
 
 const App = () => {
 
+  const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("dooCreds")))
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div>
-        <Header as="h1" attached>
+      <div className="header">
+        <Header as="h1">
           <Header.Content>TweedleDoo</Header.Content>
         </Header>
-        <Header as="h6">By Shujaat Azim</Header> 
-        <br />
+        { user && user.logged === true ? 
+        <Menu secondary fixed="top" >
+          <Menu.Item name="Home" onClick={() => history.push('/')} />
+          <Menu.Item name="About" onClick={() => history.push('/about')}  />
+          <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
+        </Menu>
+        : 
+        <Menu secondary fixed="top">
+          <Menu.Item name="Login" onClick={() => history.push('/')}  />
+          <Menu.Item name="About" onClick={() => history.push('/about')}  />
+          <Menu.Item name="Register" onClick={() => history.push('/register')}  />
+        </Menu>
+        }
       </div>
-      <div>
+        <br />
+      <div className="body">
       <br />
       { user && user.logged === true ? 
       <Switch>
@@ -40,6 +53,8 @@ const App = () => {
         <Route component={NotFoundPage} />
       </Switch>
       }
+      </div>
+      <div className="footer">
       </div>
     </div>
   );

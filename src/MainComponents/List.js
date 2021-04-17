@@ -14,18 +14,14 @@ const List = props => {
   const [editingName, setEditingName] = useState(false)
 
   const deleteList = () => {
-    if (currentList.items.length === 0) {
-      fetch(`http://localhost:3000/lists/${currentList.id}`, {
-        method: "DELETE",
-        headers: {
-          "Authorization": `Bearer ${creds.jwt}`
-        }
-      })
-      .then(() => setCurrentList(null))
-      .then(() => getLists())
-    } else {
-      alert("Delete all items from this list first!")
-    }
+    fetch(`http://localhost:3000/lists/${currentList.id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${creds.jwt}`
+      }
+    })
+    .then(() => setCurrentList(null))
+    .then(() => getLists())
   }
 
   return (

@@ -18,21 +18,20 @@ const App = () => {
     <div style={{ textAlign: "center" }}>
       <div className="header">
         <Header as="h1">
-          <Header.Content>TweedleDoo</Header.Content>
+          { user && user.logged === true ? 
+          <Menu secondary floated="right">
+            <Menu.Item name="Home" onClick={() => history.push('/')} />
+            <Menu.Item name="About" onClick={() => history.push('/about')}  />
+            <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
+          </Menu>
+          : 
+          <Menu secondary>
+            <Menu.Item name="Login" onClick={() => history.push('/')}  />
+            <Menu.Item name="About" onClick={() => history.push('/about')}  />
+            <Menu.Item name="Register" onClick={() => history.push('/register')}  />
+          </Menu>
+          }
         </Header>
-        { user && user.logged === true ? 
-        <Menu secondary fixed="top" >
-          <Menu.Item name="Home" onClick={() => history.push('/')} />
-          <Menu.Item name="About" onClick={() => history.push('/about')}  />
-          <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
-        </Menu>
-        : 
-        <Menu secondary fixed="top">
-          <Menu.Item name="Login" onClick={() => history.push('/')}  />
-          <Menu.Item name="About" onClick={() => history.push('/about')}  />
-          <Menu.Item name="Register" onClick={() => history.push('/register')}  />
-        </Menu>
-        }
       </div>
         <br />
       <div className="body">

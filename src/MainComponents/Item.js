@@ -45,16 +45,16 @@ const Item = props => {
         <Grid.Column style={{ paddingLeft: "33%"}}>
           <b style={ complete ? styles : undefined }>{item.content}</b>
         </Grid.Column>
-        <Grid.Column style={{ paddingRight: "20%" }}>
+        <Grid.Column style={{ paddingRight: "30%" }}>
           { edit ? 
             <EditItemForm item={item} handleList={handleList} currentList={currentList} setEdit={setEdit} />
               :
             <Button.Group>
-              <Button positive onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "Mark Incomplete" : "Mark Complete" }</Button>
+              <Button positive onClick={() => {setComplete(!complete);handleComplete(item.id)}}>{ complete ? "x" : "✓" }</Button>
               <Button.Or />
-              <Button primary onClick={() => setEdit(!edit)}>{ edit ? "Cancel Edit" : "Edit Item" }</Button>
+              <Button primary onClick={() => setEdit(!edit)}>✎</Button>
               <Button.Or />
-              <Button negative onClick={() => deleteItem(item.id)}>Delete Item</Button>
+              <Button negative onClick={() => deleteItem(item.id)}>⌫</Button>
             </Button.Group>
           }
         </Grid.Column>

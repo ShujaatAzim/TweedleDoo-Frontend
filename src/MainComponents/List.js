@@ -4,45 +4,37 @@ import EditListForm from '../FormComponents/EditListForm';
 import { useRecoilState } from 'recoil';
 import { currentListState } from '../Recoil/atoms';
 import { Button, Grid } from 'semantic-ui-react';
+import RemoveListForm from '../FormComponents/RemoveListForm';
 
 const List = props => {
 
   const { getLists, handleList } = props
-  const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   const [currentList, setCurrentList] = useRecoilState(currentListState)
   const [editingName, setEditingName] = useState(false)
-
-  const deleteList = () => {
-    fetch(`http://localhost:3000/lists/${currentList.id}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${creds.jwt}`
-      }
-    })
-    .then(() => setCurrentList(null))
-    .then(() => getLists())
-  }
+  const [deletingList, setDeletingList] = useState(false)
 
   return (
     <div>
       <h3>
         { currentList.name }
       </h3>
-      { editingName ? null : 
+      { editingName ? 
+        <EditListForm handleList={handleList} getLists={getLists} currentList={currentList} setEditingName={setEditingName} />
+          : 
+        deletingList ? 
+        <RemoveListForm setCurrentList={setCurrentList} getLists={getLists} currentList={currentList} setDeletingList={setDeletingList} />
+          :
         <div>
           <Button.Group>
             <Button className="blue-button" onClick={() => setCurrentList(null)}>Hide List</Button>
               <Button.Or />
             <Button className="green-button" onClick={() => setEditingName(true)}>Edit List</Button>
               <Button.Or />
-            <Button className="red-button" onClick={() => deleteList()}>Delete List</Button>
+            <Button className="red-button" onClick={() => setDeletingList(true)}>Delete List</Button>
           </Button.Group>
         </div>
       }
-      { editingName ? 
-          <EditListForm handleList={handleList} getLists={getLists} currentList={currentList} setEditingName={setEditingName} /> 
-        : null }
       <br />
       <br />
       <div>

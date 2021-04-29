@@ -7,32 +7,25 @@
 }
 
 h1 { 
-  color: hsl(3, 100%, 68%);
-}
-
-.header {
-  height: 6vh;
+  color: hsl(-87, 100%, 60%);
 }
 
 .body {
-  height: 87vh;
-}
-
-.footer {
-  height: 7vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .blue-button {
   color: black !important;
-  background-color: hsl(213, 100%, 88%) !important;
+  background-color: hsl(213, 100%, 80%) !important;
 }
 
 .green-button {
   color: black !important;
-  background-color: hsl(123, 100%, 88%) !important;
+  background-color: hsl(123, 100%, 80%) !important;
 }
 
 .red-button {
   color: black !important;
-  background-color: hsl(-57, 100%, 88%) !important;
+  background-color: hsl(-57, 100%, 80%) !important;
 }

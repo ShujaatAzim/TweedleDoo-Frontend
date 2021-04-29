@@ -32,9 +32,9 @@ const EditListForm = props => {
       <form onSubmit={e => editList(e, currentList.id)}>
         <Input type="text" value={newName} onChange={e => setNewName(e.target.value)} />
         <Button.Group>
-          <Button type="submit" positive>Submit</Button>
+          <Button type="submit" className="green-button">Submit</Button>
           <Button.Or />
-          <Button type="button" onClick={() => setEditingName(false)}>Cancel</Button>
+          <Button type="button" className="red-button"onClick={() => setEditingName(false)}>Cancel</Button>
         </Button.Group>
       </form>
     </div>

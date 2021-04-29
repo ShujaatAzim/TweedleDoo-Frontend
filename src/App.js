@@ -8,6 +8,7 @@ import ProfilePage from './Pages/ProfilePage';
 import NotFoundPage from './Pages/NotFoundPage';
 import ErrorPage from './Pages/ErrorPage';
 import { Header, Menu } from 'semantic-ui-react';
+import './App.css';
 
 const App = () => {
 
@@ -15,12 +16,11 @@ const App = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("dooCreds")))
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="app">
       <div className="header">
         <Header as="h1">
           { user && user.logged === true ? 
           <Menu secondary fixed>
-            <Header.Content><h1>TweedleDoo</h1></Header.Content>
             <Menu.Item name="Home" onClick={() => history.push('/')} />
             <Menu.Item name="About" onClick={() => history.push('/about')}  />
             <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
@@ -36,6 +36,8 @@ const App = () => {
       </div>
         <br />
       <div className="body">
+      <h1>TweedleDoo</h1>
+      <br />
       <br />
       { user && user.logged === true ? 
       <Switch>

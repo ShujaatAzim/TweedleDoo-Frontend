@@ -18,9 +18,9 @@ const ListContainer = props => {
         <List currentItems={currentItems} {...props} />
       </div>
       <div>
-        { currentItems.length === 0 ? "No items! Add some below:" : 
-          completedItems.length !== currentItems.length ? `You have ${ currentItems.length - completedItems.length} todos left!` : 
-          "List complete! Yay!" }
+        { currentItems.length === 0 ? <h3>No items! Add some below:</h3> : 
+          completedItems.length !== currentItems.length ? <h3>You have { currentItems.length - completedItems.length} todos left!</h3> : 
+          <h3>List complete! Yay!</h3> }
       </div>
       <div>
         <ItemFormContainer {...props} />

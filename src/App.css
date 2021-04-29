@@ -1,0 +1,38 @@
+.app {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  background-color: bisque;
+}
+
+h1 { 
+  color: hsl(3, 100%, 68%);
+}
+
+.header {
+  height: 6vh;
+}
+
+.body {
+  height: 87vh;
+}
+
+.footer {
+  height: 7vh;
+}
+
+.blue-button {
+  color: black !important;
+  background-color: hsl(213, 100%, 88%) !important;
+}
+
+.green-button {
+  color: black !important;
+  background-color: hsl(123, 100%, 88%) !important;
+}
+
+.red-button {
+  color: black !important;
+  background-color: hsl(-57, 100%, 88%) !important;
+}

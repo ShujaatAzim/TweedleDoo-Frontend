@@ -42,14 +42,14 @@ const LoginPage = props => {
             <label>Password</label>
             <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Field>
-          <Button primary type="submit">Log In</Button>
+          <Button className="blue-button" type="submit">Log In</Button>
         </Form>
       </div>
       <br />
       <br />
       <div>
         <h3>Or sign up! It's free!</h3>
-        <Button type="button" primary onClick={() => history.push("/register")}>Register</Button>
+        <Button type="button" className="blue-button" onClick={() => history.push("/register")}>Register</Button>
       </div>
     </div>
   );

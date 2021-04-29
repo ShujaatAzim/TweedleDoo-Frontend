@@ -37,9 +37,9 @@ const NewListForm = props => {
       <form onSubmit={e => createList(e)}>
         <Input type="text" value={newListName} placeholder="new list name" onChange={e => setNewListName(e.target.value)} />
         <Button.Group>
-          <Button type="submit" primary>Submit</Button>
+          <Button type="submit" className="green-button">Submit</Button>
           <Button.Or />
-          <Button type="button" negative onClick={() => setCreatingList(false)}>Cancel</Button>
+          <Button type="button" className="red-button" onClick={() => setCreatingList(false)}>Cancel</Button>
         </Button.Group>
       </form>
     </div>

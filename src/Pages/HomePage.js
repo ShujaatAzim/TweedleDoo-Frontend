@@ -39,11 +39,14 @@ const HomePage = () => {
     <div>
       { currentList || creatingList ? null :
       <div>
-        <h1>Welcome, {creds.username}!</h1>
+        <h2>Welcome, {creds.username}!</h2>
         <label>Choose a List</label>
         <div>
-          <Select placeholder="Choose List" options={lists.map(list => ({key: list.id, text: list.name, value: list.id}))} 
-            onChange={(e, data) => handleList(data.value)} />
+          <Select style={{ backgroundColor: "transparent"}} 
+            placeholder="Choose List" 
+            options={lists.map(list => ({key: list.id, text: list.name, value: list.id}))} 
+            onChange={(e, data) => handleList(data.value)} 
+          />
         </div>
       </div> 
       }
@@ -52,7 +55,8 @@ const HomePage = () => {
         <div>
           <h4>Or, create new list!</h4>
           <div>
-            <Button primary disabled={creatingList} onClick={() => {setCurrentList(null);setCreatingList(true)}}>Create List</Button>
+            <Button className="blue-button" primary disabled={creatingList} 
+            onClick={() => {setCurrentList(null);setCreatingList(true)}}>Create List</Button>
           </div>
         </div> : null 
       }

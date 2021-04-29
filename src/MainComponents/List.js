@@ -32,11 +32,11 @@ const List = props => {
       { editingName ? null : 
         <div>
           <Button.Group>
-            <Button onClick={() => setCurrentList(null)}>Hide List</Button>
+            <Button className="blue-button" onClick={() => setCurrentList(null)}>Hide List</Button>
               <Button.Or />
-            <Button onClick={() => setEditingName(true)}>Edit List</Button>
+            <Button className="green-button" onClick={() => setEditingName(true)}>Edit List</Button>
               <Button.Or />
-            <Button onClick={() => deleteList()}>Delete List</Button>
+            <Button className="red-button" onClick={() => deleteList()}>Delete List</Button>
           </Button.Group>
         </div>
       }

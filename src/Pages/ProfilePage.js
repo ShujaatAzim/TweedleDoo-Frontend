@@ -23,18 +23,12 @@ const ProfilePage = () => {
     // eslint-disable-next-line
   }, [])
 
-  const handleLogout = () => {
-    setUser(null)
-    history.push('/')
-  }
-
   return (
     <div>
       <h1>{user.username}'s page.</h1>
       <p><b>TOKEN:</b> {creds.jwt}</p>
       <p>Number of Lists: {lists.length}</p>
       <button onClick={() => history.push('/')}>Home</button>
-      <button onClick={() => {localStorage.removeItem("dooCreds");handleLogout()}}>Logout</button>
     </div>
   );
 }

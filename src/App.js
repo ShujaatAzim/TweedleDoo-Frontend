@@ -15,6 +15,12 @@ const App = () => {
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("dooCreds")))
 
+  const handleLogout = () => {
+    localStorage.removeItem("dooCreds")
+    setUser(null)
+    history.push('/')
+  }
+
   return (
     <div className="app">
       <div className="header">
@@ -24,10 +30,11 @@ const App = () => {
             <Menu.Item name="Home" onClick={() => history.push('/')} />
             <Menu.Item name="About" onClick={() => history.push('/about')}  />
             <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
+            <Menu.Item name="Logout" onClick={() => handleLogout()} />
           </Menu>
           : 
           <Menu secondary>
-            <Menu.Item name="Login" onClick={() => history.push('/')}  />
+            <Menu.Item name="Login" onClick={() => history.push('/login')}  />
             <Menu.Item name="About" onClick={() => history.push('/about')}  />
             <Menu.Item name="Register" onClick={() => history.push('/register')}  />
           </Menu>
@@ -50,6 +57,7 @@ const App = () => {
       : 
       <Switch>
         <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
+        <Route exact path="/login" component={() => <LoginPage setUser={setUser} />} />
         <Route exact path="/register" component={() => <RegisterPage setUser={setUser} />} /> 
         <Route exact path="/error" component={ErrorPage} />
         <Route component={NotFoundPage} />

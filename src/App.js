@@ -43,7 +43,7 @@ const App = () => {
       </div>
         <br />
       <div className="body">
-      <h1>TweedleDoo</h1>
+      <h1 style={{ fontSize: "6vw" }}>TweedleDoo</h1>
       <br />
       <br />
       { user && user.logged === true ? 

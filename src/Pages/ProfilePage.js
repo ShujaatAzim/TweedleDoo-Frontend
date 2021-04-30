@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState, listsState } from '../Recoil/atoms';
+import { Button } from 'semantic-ui-react';
 
 const ProfilePage = () => {
 
@@ -25,10 +26,11 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <h1>{user.username}'s page.</h1>
-      <p><b>TOKEN:</b> {creds.jwt}</p>
+      <h1>{user.username}'s page</h1>
+      <br />
       <p>Number of Lists: {lists.length}</p>
-      <button onClick={() => history.push('/')}>Home</button>
+      <br />
+      <Button className="blue-button" onClick={() => history.push('/')}>Home</Button>
     </div>
   );
 }

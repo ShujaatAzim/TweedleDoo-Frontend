@@ -44,13 +44,13 @@ const RegisterPage = props => {
             <label>Password</label>
             <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Field>
-          <Button primary type="submit">Register</Button>
+          <Button className="blue-button" type="submit">Register</Button>
         </Form>
       </div>
       <br />
       <br />
       <div>
-        <Button type="button" primary onClick={() => history.push("/")}>Back</Button>
+        <Button type="button" className="blue-button" onClick={() => history.push("/")}>Back</Button>
       </div>
     </div>
   );

@@ -40,6 +40,7 @@ const HomePage = () => {
       { currentList || creatingList ? null :
       <div>
         <h2>Welcome, {creds.username}!</h2>
+        <br />
         <label>Choose a List</label>
         <div>
           <Select style={{ backgroundColor: "transparent"}} 

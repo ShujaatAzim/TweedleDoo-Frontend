@@ -53,7 +53,7 @@ const HomePage = () => {
       }
       <br />
       { !currentList && !creatingList ?
-        <div>
+        <div> 
           <h4>Or, create new list!</h4>
           <div>
             <Button className="blue-button" primary disabled={creatingList} 

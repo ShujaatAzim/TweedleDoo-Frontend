@@ -58,6 +58,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
         <Route exact path="/login" component={() => <LoginPage setUser={setUser} />} />
+        <Route exact path="/about" component={AboutPage} />
         <Route exact path="/register" component={() => <RegisterPage setUser={setUser} />} /> 
         <Route exact path="/error" component={ErrorPage} />
         <Route component={NotFoundPage} />

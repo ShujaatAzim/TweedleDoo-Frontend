@@ -28,7 +28,7 @@ const ProfilePage = () => {
     <div>
       <h1>{user.username}'s page</h1>
       <br />
-      <p>Number of Lists: {lists.length}</p>
+      <h3>Number of Lists: {lists.length}</h3>
       <br />
       <Button className="blue-button" onClick={() => history.push('/')}>Home</Button>
     </div>

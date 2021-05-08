@@ -42,8 +42,10 @@ const HomePage = () => {
         <h2>Welcome, {creds.username}!</h2>
         <br />
         <label>Choose a List</label>
+        <br />
+        <br />
         <div>
-          <Select style={{ backgroundColor: "transparent"}} 
+          <Select 
             placeholder="Choose List" 
             options={lists.map(list => ({key: list.id, text: list.name, value: list.id}))} 
             onChange={(e, data) => handleList(data.value)} 
@@ -51,6 +53,8 @@ const HomePage = () => {
         </div>
       </div> 
       }
+      { currentList ? <div><ListContainer handleList={handleList} getLists={getLists} /></div> : null }
+      <br />
       <br />
       { !currentList && !creatingList ?
         <div> 
@@ -62,7 +66,6 @@ const HomePage = () => {
         </div> : null 
       }
       { creatingList ? <div><NewListForm getLists={getLists} handleList={handleList} setCreatingList={setCreatingList} /></div> : null }
-      { currentList ? <div><ListContainer handleList={handleList} getLists={getLists} /></div> : null }
     </div>
   );
 }

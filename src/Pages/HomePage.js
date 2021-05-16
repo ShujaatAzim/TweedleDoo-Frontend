@@ -41,16 +41,17 @@ const HomePage = () => {
       <div>
         <h2>Welcome, {creds.username}!</h2>
         <br />
-        <label>Choose a List</label>
-        <br />
-        <br />
+        { lists.length === 0 ? <p>No lists! Create one below!</p> : 
         <div>
+          <label>Choose a List</label>
+          <br />
+          <br />
           <Select 
             placeholder="Choose List" 
             options={lists.map(list => ({key: list.id, text: list.name, value: list.id}))} 
             onChange={(e, data) => handleList(data.value)} 
           />
-        </div>
+        </div> }
       </div> 
       }
       { currentList ? <div><ListContainer handleList={handleList} getLists={getLists} /></div> : null }

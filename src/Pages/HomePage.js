@@ -4,6 +4,7 @@ import NewListForm from '../FormComponents/NewListForm';
 import { useRecoilState } from 'recoil';
 import { currentListState, creatingListState, listsState } from '../Recoil/atoms';
 import { Button, Select } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const HomePage = () => {
 
@@ -19,7 +20,7 @@ const HomePage = () => {
   }, [])
 
   const getLists = () => {
-    fetch("http://localhost:3000/lists", {
+    fetch(`${urlHost}/lists`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${creds.jwt}`
@@ -30,7 +31,7 @@ const HomePage = () => {
   }
 
   const handleList = id => {
-    fetch(`http://localhost:3000/lists/${id}`)
+    fetch(`${urlHost}/lists/${id}`)
     .then(resp => resp.json())
     .then(list => setCurrentList(list))
   }

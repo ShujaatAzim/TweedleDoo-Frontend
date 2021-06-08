@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState, listsState } from '../Recoil/atoms';
 import { Button } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const ProfilePage = () => {
 
@@ -13,7 +14,7 @@ const ProfilePage = () => {
   const [lists, setLists] = useRecoilState(listsState)
 
   useEffect(() => {
-    fetch('http://localhost:3000/profile', {
+    fetch(`${urlHost}/profile`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${creds.jwt}`

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const RegisterPage = props => {
 
@@ -17,7 +18,7 @@ const RegisterPage = props => {
        "password": password 
       }
     }
-    fetch('http://localhost:3000/users', {
+    fetch(`${urlHost}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

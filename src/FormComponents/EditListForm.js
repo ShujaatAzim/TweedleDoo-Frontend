@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const EditListForm = props => {
 
@@ -11,7 +12,7 @@ const EditListForm = props => {
 
   const editList = (e, id) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/lists/${id}`, {
+    fetch(`${urlHost}/lists/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

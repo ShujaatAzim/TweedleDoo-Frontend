@@ -4,6 +4,8 @@ import RemoveItemForm from '../FormComponents/RemoveItemForm';
 import { Button, Grid } from 'semantic-ui-react';
 import { useRecoilValue } from 'recoil';
 import { currentListState } from '../Recoil/atoms';
+import urlHost from "../urlHelper"
+
 
 const Item = props => {
 
@@ -15,7 +17,7 @@ const Item = props => {
   const [removeItem, setRemoveItem] = useState(false)
 
   const handleComplete = id => {
-    fetch(`http://localhost:3000/items/${id}`, {
+    fetch(`${urlHost}/items/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

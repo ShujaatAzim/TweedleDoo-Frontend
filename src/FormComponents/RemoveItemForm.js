@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const RemoveItemForm = props => {
 
   const { item, setRemoveItem, handleList, currentList } = props;
 
   const deleteItem = id => {
-    fetch(`http://localhost:3000/items/${id}`, {
+    fetch(`${urlHost}/items/${id}`, {
       method: "DELETE"
     })
     .then(() => setRemoveItem(false))

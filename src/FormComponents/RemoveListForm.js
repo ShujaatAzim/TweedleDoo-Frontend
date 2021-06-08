@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const RemoveListForm = props => {
 
@@ -7,7 +8,7 @@ const RemoveListForm = props => {
   const creds = JSON.parse(localStorage.getItem("dooCreds"))
 
   const deleteList = id => {
-    fetch(`http://localhost:3000/lists/${id}`, {
+    fetch(`${urlHost}/lists/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${creds.jwt}`

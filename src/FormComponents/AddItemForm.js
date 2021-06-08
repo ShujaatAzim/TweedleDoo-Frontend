@@ -2,6 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { currentListState } from '../Recoil/atoms';
 import { Button, Input } from 'semantic-ui-react';
+import urlHost from '../urlHelper'
 
 const AddItemForm = props => {
 
@@ -14,7 +15,7 @@ const AddItemForm = props => {
     const payload = { item: {list_id: currentList.id, content: newItem, complete: false} }
 
     if (newItem !== "") {
-      fetch("http://localhost:3000/items", {
+      fetch(`${urlHost}/items`, {
         method: "POST",
         headers: {
           "Accept": "application/json",

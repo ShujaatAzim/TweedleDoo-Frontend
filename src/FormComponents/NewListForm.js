@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const NewListForm = props => {
 
@@ -13,7 +14,7 @@ const NewListForm = props => {
     const payload = { list: {name: newListName, user_id: creds.id, items: []} }
     
     if (newListName !== "") {
-      fetch('http://localhost:3000/lists', {
+      fetch(`${urlHost}/lists`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

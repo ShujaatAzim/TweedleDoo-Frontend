@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
+import urlHost from "../urlHelper"
 
 const EditItemForm = props => {
 
@@ -10,7 +11,7 @@ const EditItemForm = props => {
   const editItem = (e, id) => {
     e.preventDefault()
     if (newContent !== item.content) {
-      fetch(`http://localhost:3000/items/${id}`, {
+      fetch(`${urlHost}/items/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

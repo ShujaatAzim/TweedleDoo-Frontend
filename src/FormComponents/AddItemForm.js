@@ -35,7 +35,7 @@ const AddItemForm = props => {
     <div>
       <form onSubmit={e => addNewItem(e)}>
         <Input focus size="mini" type="text" placeholder="add item" value={newItem} onChange={e => setNewItem(e.target.value)} />
-        <Button.Group>
+        <Button.Group style={{ marginLeft: "3px" }}>
           <Button className="blue-button" type="submit">Add</Button>
             <Button.Or />
           <Button className="red-button" type="button" onClick={() => setNewItem("")}>Clear</Button>

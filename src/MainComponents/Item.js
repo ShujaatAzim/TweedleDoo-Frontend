@@ -50,15 +50,13 @@ const Item = props => {
             <RemoveItemForm item={item} handleList={handleList} currentList={currentList} setRemoveItem={setRemoveItem} />
               :
             <Button.Group>
-              <Button className="green-button" onClick={() => {setComplete(!complete);handleComplete(item.id)}}>
+              <Button className="green-button" style={{ marginRight: "3px" }} onClick={() => {setComplete(!complete);handleComplete(item.id)}}>
                 { complete ? "×" : "✓" }
               </Button>
-              <Button.Or />
-              <Button className="blue-button" animated onClick={() => setEdit(!edit)}>
+              <Button className="blue-button" style={{ marginRight: "3px" }} animated onClick={() => setEdit(!edit)}>
                 <Button.Content visible>✎</Button.Content>
                 <Button.Content hidden>Edit</Button.Content>
               </Button>
-              <Button.Or />
               <Button className="red-button" animated onClick={() => setRemoveItem(!removeItem)}>
                 <Button.Content visible>⌫</Button.Content>
                 <Button.Content hidden>Delete</Button.Content>

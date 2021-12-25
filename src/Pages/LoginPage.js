@@ -51,6 +51,7 @@ const LoginPage = props => {
       <div>
         <h3>Or sign up! It's free!</h3>
         <Button type="button" className="blue-button" onClick={() => history.push("/register")}>Register</Button>
+        <Button type="button" className="blue-button" onClick={() => console.log("logging into test account...")}>Try It Out!</Button>
       </div>
     </div>
   );

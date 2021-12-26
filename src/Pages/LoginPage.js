@@ -10,31 +10,28 @@ const LoginPage = props => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleLogin = e => {
+  const handleLogin = (e, creds) => {
     e.preventDefault();
-    let loginCredentials = {
-      "username": email,
-      "password": password
-    }
+
     fetch(`${urlHost}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ user: loginCredentials })
+      body: JSON.stringify({ user: creds })
     })
     .then(resp => resp.json())
     .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
     .then(() => props.setUser(JSON.parse(localStorage.getItem("dooCreds"))))
-    .then(() => history.push('/profile'))
+    .then(() => history.push('/'))
   }
 
   return (
     <div>
       <h1>Log in!</h1>
       <div style={{ margin: "auto", width: "40%" }}>
-        <Form onSubmit={e => handleLogin(e)}>
+        <Form onSubmit={e => handleLogin(e, {"username": email, "password": password})}>
           <Form.Field>
             <label>Email</label>
             <input placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
@@ -51,7 +48,7 @@ const LoginPage = props => {
       <div>
         <h3>Or sign up! It's free!</h3>
         <Button type="button" className="blue-button" onClick={() => history.push("/register")}>Register</Button>
-        <Button type="button" className="blue-button" onClick={() => console.log("logging into test account...")}>Try It Out!</Button>
+        <Button type="button" className="blue-button" onClick={e => handleLogin(e, {"username": "Test", "password": "124"})}>Try It Out!</Button>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const ListContainer = props => {
       <div>
         { currentItems.length === 0 ? <h3>No items! Add some below:</h3> : 
           completedItems.length !== currentItems.length ? <h3>You have { currentItems.length - completedItems.length} incomplete items!</h3> : 
-          <h3>Your "{currentList.name}" is complete! Yay!</h3> }
+          <h3>"{currentList.name}" is complete! Yay!</h3> }
       </div>
       <br />
       <div>

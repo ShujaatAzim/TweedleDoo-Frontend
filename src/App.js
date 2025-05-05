@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import RegisterPage from './Pages/RegisterPage';
 import AboutPage from './Pages/AboutPage';
@@ -47,22 +47,22 @@ const App = () => {
       <br />
       <br />
       { user && user.logged === true ? 
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/about" component={AboutPage} />
-        <Route exact path="/profile" component={ProfilePage} />
-        <Route exact path="/error" component={ErrorPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={HomePage} />
+        <Route path="/about" element={AboutPage} />
+        <Route path="/profile" element={ProfilePage} />
+        <Route path="/error" element={ErrorPage} />
+        <Route element={NotFoundPage} />
+      </Routes>
       : 
-      <Switch>
-        <Route exact path="/" component={() => <LoginPage setUser={setUser} />} />
-        <Route exact path="/login" component={() => <LoginPage setUser={setUser} />} />
-        <Route exact path="/about" component={AboutPage} />
-        <Route exact path="/register" component={() => <RegisterPage setUser={setUser} />} /> 
-        <Route exact path="/error" component={ErrorPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={() => <LoginPage setUser={setUser} />} />
+        <Route path="/login" element={() => <LoginPage setUser={setUser} />} />
+        <Route path="/about" element={AboutPage} />
+        <Route path="/register" element={() => <RegisterPage setUser={setUser} />} /> 
+        <Route path="/error" element={ErrorPage} />
+        <Route element={NotFoundPage} />
+      </Routes>
       }
       </div>
       <div className="footer">

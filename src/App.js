@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useNavigate } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import RegisterPage from './Pages/RegisterPage';
 import AboutPage from './Pages/AboutPage';
@@ -12,13 +12,13 @@ import './App.css';
 
 const App = () => {
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("dooCreds")))
 
   const handleLogout = () => {
     localStorage.removeItem("dooCreds")
     setUser(null)
-    history.push('/')
+    navigate('/')
   }
 
   return (
@@ -27,16 +27,16 @@ const App = () => {
         <Header as="h1">
           { user && user.logged === true ? 
           <Menu secondary fixed>
-            <Menu.Item name="Home" onClick={() => history.push('/')} />
-            <Menu.Item name="About" onClick={() => history.push('/about')}  />
-            <Menu.Item name="Profile" onClick={() => history.push('/profile')}  />
+            <Menu.Item name="Home" onClick={() => navigate('/')} />
+            <Menu.Item name="About" onClick={() => navigate('/about')}  />
+            <Menu.Item name="Profile" onClick={() => navigate('/profile')}  />
             <Menu.Item name="Logout" onClick={() => handleLogout()} />
           </Menu>
           : 
           <Menu secondary>
-            <Menu.Item name="Login" onClick={() => history.push('/login')}  />
-            <Menu.Item name="About" onClick={() => history.push('/about')}  />
-            <Menu.Item name="Register" onClick={() => history.push('/register')}  />
+            <Menu.Item name="Login" onClick={() => navigate('/login')}  />
+            <Menu.Item name="About" onClick={() => navigate('/about')}  />
+            <Menu.Item name="Register" onClick={() => navigate('/register')}  />
           </Menu>
           }
         </Header>

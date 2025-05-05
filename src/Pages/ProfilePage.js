@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState, listsState } from '../Recoil/atoms';
 import { Button } from 'semantic-ui-react';
@@ -8,7 +8,7 @@ import urlHost from "../urlHelper"
 const ProfilePage = () => {
 
   const creds = JSON.parse(localStorage.getItem("dooCreds"))
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [user, setUser] = useRecoilState(userState)
   const [lists, setLists] = useRecoilState(listsState)
@@ -31,7 +31,7 @@ const ProfilePage = () => {
       <br />
       <h3>Number of Lists: {lists.length}</h3>
       <br />
-      <Button className="blue-button" onClick={() => history.push('/')}>Home</Button>
+      <Button className="blue-button" onClick={() => navigate('/')}>Home</Button>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 import urlHost from "../urlHelper"
 
 const LoginPage = props => {
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -24,7 +24,7 @@ const LoginPage = props => {
     .then(resp => resp.json())
     .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
     .then(() => props.setUser(JSON.parse(localStorage.getItem("dooCreds"))))
-    .then(() => history.push('/'))
+    .then(() => navigate('/'))
   }
 
   return (
@@ -47,7 +47,7 @@ const LoginPage = props => {
       <br />
       <div>
         <h3>Or sign up! It's free!</h3>
-        <Button type="button" className="blue-button" onClick={() => history.push("/register")}>Register</Button>
+        <Button type="button" className="blue-button" onClick={() => navigate("/register")}>Register</Button>
         <Button type="button" className="blue-button" onClick={e => handleLogin(e, {"username": "Test", "password": "124"})}>Try It Out!</Button>
       </div>
     </div>

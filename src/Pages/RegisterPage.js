@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 import urlHost from "../urlHelper"
 
 const RegisterPage = props => {
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -29,7 +29,7 @@ const RegisterPage = props => {
     .then(resp => resp.json())
     .then(data => localStorage.setItem("dooCreds", JSON.stringify(data)))
     .then(() => props.setUser(JSON.parse(localStorage.getItem("dooCreds"))))
-    .then(() => history.push('/profile'))
+    .then(() => navigate('/profile'))
   }
 
   return (
@@ -51,7 +51,7 @@ const RegisterPage = props => {
       <br />
       <br />
       <div>
-        <Button type="button" className="blue-button" onClick={() => history.push("/")}>Back</Button>
+        <Button type="button" className="blue-button" onClick={() => navigate("/")}>Back</Button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Item from './Item';
 import EditListForm from '../FormComponents/EditListForm';
 import { useRecoilState } from 'recoil';

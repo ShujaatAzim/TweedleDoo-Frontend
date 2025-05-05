@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import EditItemForm from '../FormComponents/EditItemForm';
 import RemoveItemForm from '../FormComponents/RemoveItemForm';
 import { Button, Grid } from 'semantic-ui-react';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AboutPage = () => {
   return (
     <div style={{ marginLeft: "10rem", marginRight: "10rem" }}>

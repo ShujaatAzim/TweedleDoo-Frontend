@@ -1,4 +1,3 @@
-import React from 'react';
 import List from '../MainComponents/List';
 import ItemFormContainer from '../ContainerComponents/ItemFormContainer';
 import { useRecoilValue } from 'recoil';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { currentListState } from '../Recoil/atoms';
 import { Button, Input } from 'semantic-ui-react';

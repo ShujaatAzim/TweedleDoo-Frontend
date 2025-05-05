@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ListContainer from '../ContainerComponents/ListContainer';
 import NewListForm from '../FormComponents/NewListForm';
 import { useRecoilState } from 'recoil';

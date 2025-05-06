@@ -48,20 +48,20 @@ const App = () => {
       <br />
       { user && user.logged === true ? 
       <Routes>
-        <Route path="/" element={HomePage} />
-        <Route path="/about" element={AboutPage} />
-        <Route path="/profile" element={ProfilePage} />
-        <Route path="/error" element={ErrorPage} />
-        <Route element={NotFoundPage} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/error" element={<ErrorPage />} />
+        <Route element={<NotFoundPage />} />
       </Routes>
       : 
       <Routes>
-        <Route path="/" element={() => <LoginPage setUser={setUser} />} />
-        <Route path="/login" element={() => <LoginPage setUser={setUser} />} />
-        <Route path="/about" element={AboutPage} />
-        <Route path="/register" element={() => <RegisterPage setUser={setUser} />} /> 
-        <Route path="/error" element={ErrorPage} />
-        <Route element={NotFoundPage} />
+        <Route path="/" element={<LoginPage setUser={setUser} />} />
+        <Route path="/login" element={<LoginPage setUser={setUser} />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/register" element={<RegisterPage setUser={setUser} />} /> 
+        <Route path="/error" element={<ErrorPage />} />
+        <Route element={<NotFoundPage />} />
       </Routes>
       }
       </div>
